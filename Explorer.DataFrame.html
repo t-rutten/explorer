@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.25.0">
+    <meta name="project" content="Explorer v0.1.0-dev">
+
+    <title>Explorer.DataFrame — Explorer v0.1.0-dev</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+
+    <script src="dist/sidebar_items-2b98db36f9.js"></script>
+
+      <script src="docs_config.js"></script>
+
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+
+
+  </head>
+  <body data-type="modules">
+    <script>
+
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="Explorer.html" class="sidebar-projectName">
+Explorer
+      </a>
+      <strong class="sidebar-projectVersion">
+        v0.1.0-dev
+      </strong>
+    </div>
+
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+Explorer.DataFrame <small class="app-vsn">(Explorer v0.1.0-dev)</small>
+
+          <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+
+      </h1>
+
+
+        <section id="moduledoc">
+<p>The DataFrame struct and API.</p>
+        </section>
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:data/0">data()</a>
+
+  </div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:t/0">t()</a>
+
+  </div>
+
+</div>
+
+  </div>
+
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#arrange/3">arrange(df, column, direction \\ :asc)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Arranges/sorts rows by columns.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#distinct/3">distinct(df, columns, keep_all? \\ false)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Takes distinct rows by a selection of columns.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#dtypes/1">dtypes(df)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Gets the dtypes of the dataframe columns.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#dummies/2">dummies(df, columns)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Turns a set of columns to dummy variables.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#filter/2">filter(df, mask)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Subset rows using column values.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#from_map/2">from_map(map, opts \\ [])</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Creates a new dataframe from a map of lists.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#groups/1">groups(data_frame)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Returns the groups of a dataframe.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#head/2">head(df, nrows \\ 6)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Returns the first <em>n</em> rows of the dataframe.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#join/3">join(left, right, opts \\ [])</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Join two tables.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mutate/2">mutate(df, with_columns)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Creates an modifies columns.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#n_cols/1">n_cols(df)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Returns the number of columns in the dataframe.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#n_rows/1">n_rows(df)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Returns the number of rows in the dataframe.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#names/1">names(df)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Gets the names of the dataframe columns.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pull/2">pull(df, column)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Extracts a single column as a series.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read_csv/2">read_csv(filename, opts \\ [])</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Reads a delimited file into a dataframe.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read_csv!/2">read_csv!(filename, opts \\ [])</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Similar to <a href="#read_csv/2"><code class="inline">read_csv/2</code></a> but raises if there is a problem reading the CSV.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rename/2">rename(df, names)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Renames columns.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rename_with/3">rename_with(df, callback, columns \\ [])</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Renames columns with a function.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#select/3">select(df, cols_or_callback, keep_or_drop \\ :keep)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Selects a subset of columns by name.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#shape/1">shape(df)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Gets the shape of the dataframe as a <code class="inline">{height, width}</code> tuple.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#slice/3">slice(df, offset, length)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Subset a continuous set of rows.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#tail/2">tail(df, nrows \\ 6)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Returns the last <em>n</em> rows of the dataframe.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#take/2">take(df, row_indices)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Subset rows with a list of indices.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_map/2">to_map(df, convert_series? \\ true)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Converts a dataframe to a map.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#write_csv/3">write_csv(df, filename, opts \\ [])</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Writes a dataframe to a delimited file.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#write_csv!/3">write_csv!(df, filename, opts \\ [])</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Similar to <a href="#write_csv/3"><code class="inline">write_csv/3</code></a> but raises if there is a problem reading the CSV.</p></div>
+
+</div>
+
+  </div>
+
+        </section>
+
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types
+          </h1>
+          <div class="types-list">
+<section class="detail" id="t:data/0">
+
+  <div class="detail-header">
+    <a href="#t:data/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">data()</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L11" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>data() :: <a href="Explorer.Backend.DataFrame.html#t:t/0">Explorer.Backend.DataFrame.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:t/0">
+
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">t()</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L12" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>t() :: %Explorer.DataFrame{data: <a href="#t:data/0">data</a>(), groups: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+          </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions
+          </h1>
+          <div class="functions-list">
+<section class="detail" id="arrange/3">
+
+    <span id="arrange/2"></span>
+
+  <div class="detail-header">
+    <a href="#arrange/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">arrange(df, column, direction \\ :asc)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L386" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Arranges/sorts rows by columns.</p><h2 id="arrange/3-examples" class="section-heading">
+  <a href="#arrange/3-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="6286879524-1">(</span><span class="p" data-group-id="6286879524-2">%{</span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6286879524-3">[</span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a&quot;</span><span class="p" data-group-id="6286879524-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6286879524-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="6286879524-4">]</span><span class="p" data-group-id="6286879524-2">}</span><span class="p" data-group-id="6286879524-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">arrange</span><span class="p" data-group-id="6286879524-5">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6286879524-6">[</span><span class="s">&quot;a&quot;</span><span class="p" data-group-id="6286879524-6">]</span><span class="p" data-group-id="6286879524-5">)</span><span class="w">
+</span><span class="p" data-group-id="6286879524-7">#</span><span class="nc" data-group-id="6286879524-7">Explorer.DataFrame</span><span class="p" data-group-id="6286879524-7">&lt;</span><span class="w">
+  </span><span class="p" data-group-id="6286879524-8">[</span><span class="ss">rows</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">columns</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="6286879524-8">]</span><span class="w">
+  </span><span class="n">a</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="p" data-group-id="6286879524-9">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p" data-group-id="6286879524-9">]</span><span class="w">
+  </span><span class="n">b</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="6286879524-10">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="6286879524-10">]</span><span class="w">
+</span><span class="p" data-group-id="6286879524-7">&gt;</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="6286879524-11">(</span><span class="p" data-group-id="6286879524-12">%{</span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6286879524-13">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a&quot;</span><span class="p" data-group-id="6286879524-13">]</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6286879524-14">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="6286879524-14">]</span><span class="p" data-group-id="6286879524-12">}</span><span class="p" data-group-id="6286879524-11">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">arrange</span><span class="p" data-group-id="6286879524-15">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6286879524-16">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p" data-group-id="6286879524-16">]</span><span class="p" data-group-id="6286879524-15">)</span><span class="w">
+</span><span class="p" data-group-id="6286879524-17">#</span><span class="nc" data-group-id="6286879524-17">Explorer.DataFrame</span><span class="p" data-group-id="6286879524-17">&lt;</span><span class="w">
+  </span><span class="p" data-group-id="6286879524-18">[</span><span class="ss">rows</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">columns</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="6286879524-18">]</span><span class="w">
+  </span><span class="n">a</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="p" data-group-id="6286879524-19">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p" data-group-id="6286879524-19">]</span><span class="w">
+  </span><span class="n">b</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="6286879524-20">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="6286879524-20">]</span><span class="w">
+</span><span class="p" data-group-id="6286879524-17">&gt;</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="distinct/3">
+
+    <span id="distinct/2"></span>
+
+  <div class="detail-header">
+    <a href="#distinct/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">distinct(df, columns, keep_all? \\ false)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L401" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Takes distinct rows by a selection of columns.</p><h2 id="distinct/3-examples" class="section-heading">
+  <a href="#distinct/3-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.Datasets</span><span class="o">.</span><span class="n">fossil_fuels</span><span class="p" data-group-id="0126117738-1">(</span><span class="p" data-group-id="0126117738-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">distinct</span><span class="p" data-group-id="0126117738-2">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0126117738-3">[</span><span class="s">&quot;year&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;country&quot;</span><span class="p" data-group-id="0126117738-3">]</span><span class="p" data-group-id="0126117738-2">)</span><span class="w">
+</span><span class="p" data-group-id="0126117738-4">#</span><span class="nc" data-group-id="0126117738-4">Explorer.DataFrame</span><span class="p" data-group-id="0126117738-4">&lt;</span><span class="w">
+  </span><span class="p" data-group-id="0126117738-5">[</span><span class="ss">rows</span><span class="p">:</span><span class="w"> </span><span class="mi">1094</span><span class="p">,</span><span class="w"> </span><span class="ss">columns</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="0126117738-5">]</span><span class="w">
+  </span><span class="n">year</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="0126117738-6">[</span><span class="mi">2010</span><span class="p">,</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="0126117738-6">]</span><span class="w">
+  </span><span class="n">country</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="p" data-group-id="0126117738-7">[</span><span class="s">&quot;AFGHANISTAN&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ALBANIA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ALGERIA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ANDORRA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ANGOLA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="0126117738-7">]</span><span class="w">
+</span><span class="p" data-group-id="0126117738-4">&gt;</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="dtypes/1">
+
+  <div class="detail-header">
+    <a href="#dtypes/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">dtypes(df)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L197" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>dtypes(df :: <a href="#t:t/0">t</a>()) :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()]</pre>
+
+      </div>
+
+<p>Gets the dtypes of the dataframe columns.</p><h2 id="dtypes/1-examples" class="section-heading">
+  <a href="#dtypes/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="7448264666-1">(</span><span class="p" data-group-id="7448264666-2">%{</span><span class="ss">floats</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7448264666-3">[</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p" data-group-id="7448264666-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">ints</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7448264666-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="7448264666-4">]</span><span class="p" data-group-id="7448264666-2">}</span><span class="p" data-group-id="7448264666-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">dtypes</span><span class="p" data-group-id="7448264666-5">(</span><span class="n">df</span><span class="p" data-group-id="7448264666-5">)</span><span class="w">
+</span><span class="p" data-group-id="7448264666-6">[</span><span class="ss">:float</span><span class="p">,</span><span class="w"> </span><span class="ss">:integer</span><span class="p" data-group-id="7448264666-6">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="dummies/2">
+
+  <div class="detail-header">
+    <a href="#dummies/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">dummies(df, columns)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L585" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Turns a set of columns to dummy variables.</p>
+  </section>
+</section>
+<section class="detail" id="filter/2">
+
+  <div class="detail-header">
+    <a href="#filter/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">filter(df, mask)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L309" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Subset rows using column values.</p><h2 id="filter/2-examples" class="section-heading">
+  <a href="#filter/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<p>  You can pass a mask directly:</p><pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="6508596883-1">(</span><span class="p" data-group-id="6508596883-2">%{</span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6508596883-3">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p" data-group-id="6508596883-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6508596883-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="6508596883-4">]</span><span class="p" data-group-id="6508596883-2">}</span><span class="p" data-group-id="6508596883-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="6508596883-5">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="nc">Explorer.Series</span><span class="o">.</span><span class="n">gt</span><span class="p" data-group-id="6508596883-6">(</span><span class="n">df</span><span class="p" data-group-id="6508596883-7">[</span><span class="s">&quot;b&quot;</span><span class="p" data-group-id="6508596883-7">]</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="6508596883-6">)</span><span class="p" data-group-id="6508596883-5">)</span><span class="w">
+</span><span class="p" data-group-id="6508596883-8">#</span><span class="nc" data-group-id="6508596883-8">Explorer.DataFrame</span><span class="p" data-group-id="6508596883-8">&lt;</span><span class="w">
+  </span><span class="p" data-group-id="6508596883-9">[</span><span class="ss">rows</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="ss">columns</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="6508596883-9">]</span><span class="w">
+  </span><span class="n">a</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="p" data-group-id="6508596883-10">[</span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p" data-group-id="6508596883-10">]</span><span class="w">
+  </span><span class="n">b</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="6508596883-11">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="6508596883-11">]</span><span class="w">
+</span><span class="p" data-group-id="6508596883-8">&gt;</span></code></pre><p>  Or you can invoke a callback on the dataframe:</p><pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="2911599471-1">(</span><span class="p" data-group-id="2911599471-2">%{</span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2911599471-3">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p" data-group-id="2911599471-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2911599471-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="2911599471-4">]</span><span class="p" data-group-id="2911599471-2">}</span><span class="p" data-group-id="2911599471-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="2911599471-5">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">Explorer.Series</span><span class="o">.</span><span class="n">gt</span><span class="p" data-group-id="2911599471-6">(</span><span class="ni">&amp;1</span><span class="p" data-group-id="2911599471-7">[</span><span class="s">&quot;b&quot;</span><span class="p" data-group-id="2911599471-7">]</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="2911599471-6">)</span><span class="p" data-group-id="2911599471-5">)</span><span class="w">
+</span><span class="p" data-group-id="2911599471-8">#</span><span class="nc" data-group-id="2911599471-8">Explorer.DataFrame</span><span class="p" data-group-id="2911599471-8">&lt;</span><span class="w">
+  </span><span class="p" data-group-id="2911599471-9">[</span><span class="ss">rows</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="ss">columns</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="2911599471-9">]</span><span class="w">
+  </span><span class="n">a</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="p" data-group-id="2911599471-10">[</span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p" data-group-id="2911599471-10">]</span><span class="w">
+  </span><span class="n">b</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="2911599471-11">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="2911599471-11">]</span><span class="w">
+</span><span class="p" data-group-id="2911599471-8">&gt;</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="from_map/2">
+
+    <span id="from_map/1"></span>
+
+  <div class="detail-header">
+    <a href="#from_map/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">from_map(map, opts \\ [])</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L154" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>from_map(map :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), opts :: <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Creates a new dataframe from a map of lists.</p><p>Lists must be the same length. This function calls <a href="Explorer.Series.html#from_list/2"><code class="inline">Explorer.Series.from_list/2</code></a> so lists must
+conform to the requirements for making a series.</p><h2 id="from_map/2-options" class="section-heading">
+  <a href="#from_map/2-options" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Options
+</h2>
+<ul><li><code class="inline">backend</code> - The Explorer backend to use. Defaults to the value returned by <a href="Explorer.html#default_backend/0"><code class="inline">Explorer.default_backend/0</code></a>.</li></ul><h2 id="from_map/2-examples" class="section-heading">
+  <a href="#from_map/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="6284715169-1">(</span><span class="p" data-group-id="6284715169-2">%{</span><span class="ss">floats</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6284715169-3">[</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p" data-group-id="6284715169-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">ints</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6284715169-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="6284715169-4">]</span><span class="p" data-group-id="6284715169-2">}</span><span class="p" data-group-id="6284715169-1">)</span><span class="w">
+</span><span class="p" data-group-id="6284715169-5">#</span><span class="nc" data-group-id="6284715169-5">Explorer.DataFrame</span><span class="p" data-group-id="6284715169-5">&lt;</span><span class="w">
+  </span><span class="p" data-group-id="6284715169-6">[</span><span class="ss">rows</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="ss">columns</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="6284715169-6">]</span><span class="w">
+  </span><span class="n">floats</span><span class="w"> </span><span class="n">float</span><span class="w"> </span><span class="p" data-group-id="6284715169-7">[</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p" data-group-id="6284715169-7">]</span><span class="w">
+  </span><span class="n">ints</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="6284715169-8">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="6284715169-8">]</span><span class="w">
+</span><span class="p" data-group-id="6284715169-5">&gt;</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="groups/1">
+
+  <div class="detail-header">
+    <a href="#groups/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">groups(data_frame)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L227" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>groups(df :: <a href="#t:t/0">t</a>()) :: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()]</pre>
+
+      </div>
+
+<p>Returns the groups of a dataframe.</p>
+  </section>
+</section>
+<section class="detail" id="head/2">
+
+    <span id="head/1"></span>
+
+  <div class="detail-header">
+    <a href="#head/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">head(df, nrows \\ 6)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L234" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Returns the first <em>n</em> rows of the dataframe.</p>
+  </section>
+</section>
+<section class="detail" id="join/3">
+
+    <span id="join/2"></span>
+
+  <div class="detail-header">
+    <a href="#join/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">join(left, right, opts \\ [])</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L609" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Join two tables.</p>
+  </section>
+</section>
+<section class="detail" id="mutate/2">
+
+  <div class="detail-header">
+    <a href="#mutate/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mutate(df, with_columns)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L363" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Creates an modifies columns.</p><p>Columns are added as keyword list arguments. New variables overwrite existing variables of the 
+same name. Column names are coerced from atoms to strings.</p><h2 id="mutate/2-examples" class="section-heading">
+  <a href="#mutate/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<p>  You can pass in a list directly as a new column:</p><pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="2879422276-1">(</span><span class="p" data-group-id="2879422276-2">%{</span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2879422276-3">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p" data-group-id="2879422276-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2879422276-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="2879422276-4">]</span><span class="p" data-group-id="2879422276-2">}</span><span class="p" data-group-id="2879422276-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">mutate</span><span class="p" data-group-id="2879422276-5">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="ss">c</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2879422276-6">[</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="2879422276-6">]</span><span class="p" data-group-id="2879422276-5">)</span><span class="w">
+</span><span class="p" data-group-id="2879422276-7">#</span><span class="nc" data-group-id="2879422276-7">Explorer.DataFrame</span><span class="p" data-group-id="2879422276-7">&lt;</span><span class="w">
+  </span><span class="p" data-group-id="2879422276-8">[</span><span class="ss">rows</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">columns</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="2879422276-8">]</span><span class="w">
+  </span><span class="n">a</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="p" data-group-id="2879422276-9">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p" data-group-id="2879422276-9">]</span><span class="w">
+  </span><span class="n">b</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="2879422276-10">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="2879422276-10">]</span><span class="w">
+  </span><span class="n">c</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="2879422276-11">[</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="2879422276-11">]</span><span class="w">
+</span><span class="p" data-group-id="2879422276-7">&gt;</span></code></pre><p>  Or you can pass in a series:</p><pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="0555782334-1">(</span><span class="p" data-group-id="0555782334-2">%{</span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0555782334-3">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p" data-group-id="0555782334-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0555782334-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="0555782334-4">]</span><span class="p" data-group-id="0555782334-2">}</span><span class="p" data-group-id="0555782334-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.Series</span><span class="o">.</span><span class="n">from_list</span><span class="p" data-group-id="0555782334-5">(</span><span class="p" data-group-id="0555782334-6">[</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="0555782334-6">]</span><span class="p" data-group-id="0555782334-5">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">mutate</span><span class="p" data-group-id="0555782334-7">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="ss">c</span><span class="p">:</span><span class="w"> </span><span class="n">s</span><span class="p" data-group-id="0555782334-7">)</span><span class="w">
+</span><span class="p" data-group-id="0555782334-8">#</span><span class="nc" data-group-id="0555782334-8">Explorer.DataFrame</span><span class="p" data-group-id="0555782334-8">&lt;</span><span class="w">
+  </span><span class="p" data-group-id="0555782334-9">[</span><span class="ss">rows</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">columns</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="0555782334-9">]</span><span class="w">
+  </span><span class="n">a</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="p" data-group-id="0555782334-10">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p" data-group-id="0555782334-10">]</span><span class="w">
+  </span><span class="n">b</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="0555782334-11">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="0555782334-11">]</span><span class="w">
+  </span><span class="n">c</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="0555782334-12">[</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="0555782334-12">]</span><span class="w">
+</span><span class="p" data-group-id="0555782334-8">&gt;</span></code></pre><p>  Or you can invoke a callback on the dataframe:</p><pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="3455194422-1">(</span><span class="p" data-group-id="3455194422-2">%{</span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3455194422-3">[</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="3455194422-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3455194422-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="3455194422-4">]</span><span class="p" data-group-id="3455194422-2">}</span><span class="p" data-group-id="3455194422-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">mutate</span><span class="p" data-group-id="3455194422-5">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="ss">c</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">Explorer.Series</span><span class="o">.</span><span class="n">add</span><span class="p" data-group-id="3455194422-6">(</span><span class="ni">&amp;1</span><span class="p" data-group-id="3455194422-7">[</span><span class="s">&quot;a&quot;</span><span class="p" data-group-id="3455194422-7">]</span><span class="p">,</span><span class="w"> </span><span class="ni">&amp;1</span><span class="p" data-group-id="3455194422-8">[</span><span class="s">&quot;b&quot;</span><span class="p" data-group-id="3455194422-8">]</span><span class="p" data-group-id="3455194422-6">)</span><span class="p" data-group-id="3455194422-5">)</span><span class="w">
+</span><span class="p" data-group-id="3455194422-9">#</span><span class="nc" data-group-id="3455194422-9">Explorer.DataFrame</span><span class="p" data-group-id="3455194422-9">&lt;</span><span class="w">
+  </span><span class="p" data-group-id="3455194422-10">[</span><span class="ss">rows</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">columns</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="3455194422-10">]</span><span class="w">
+  </span><span class="n">a</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="3455194422-11">[</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="3455194422-11">]</span><span class="w">
+  </span><span class="n">b</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="3455194422-12">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="3455194422-12">]</span><span class="w">
+  </span><span class="n">c</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="3455194422-13">[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p" data-group-id="3455194422-13">]</span><span class="w">
+</span><span class="p" data-group-id="3455194422-9">&gt;</span></code></pre><p>  You can overwrite existing columns:</p><pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="7614675406-1">(</span><span class="p" data-group-id="7614675406-2">%{</span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7614675406-3">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p" data-group-id="7614675406-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7614675406-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="7614675406-4">]</span><span class="p" data-group-id="7614675406-2">}</span><span class="p" data-group-id="7614675406-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">mutate</span><span class="p" data-group-id="7614675406-5">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7614675406-6">[</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="7614675406-6">]</span><span class="p" data-group-id="7614675406-5">)</span><span class="w">
+</span><span class="p" data-group-id="7614675406-7">#</span><span class="nc" data-group-id="7614675406-7">Explorer.DataFrame</span><span class="p" data-group-id="7614675406-7">&lt;</span><span class="w">
+  </span><span class="p" data-group-id="7614675406-8">[</span><span class="ss">rows</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">columns</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="7614675406-8">]</span><span class="w">
+  </span><span class="n">a</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="7614675406-9">[</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="7614675406-9">]</span><span class="w">
+  </span><span class="n">b</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="7614675406-10">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="7614675406-10">]</span><span class="w">
+</span><span class="p" data-group-id="7614675406-7">&gt;</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="n_cols/1">
+
+  <div class="detail-header">
+    <a href="#n_cols/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">n_cols(df)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L221" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>n_cols(df :: <a href="#t:t/0">t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+
+      </div>
+
+<p>Returns the number of columns in the dataframe.</p>
+  </section>
+</section>
+<section class="detail" id="n_rows/1">
+
+  <div class="detail-header">
+    <a href="#n_rows/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">n_rows(df)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L215" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>n_rows(df :: <a href="#t:t/0">t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+
+      </div>
+
+<p>Returns the number of rows in the dataframe.</p>
+  </section>
+</section>
+<section class="detail" id="names/1">
+
+  <div class="detail-header">
+    <a href="#names/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">names(df)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L185" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>names(df :: <a href="#t:t/0">t</a>()) :: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()]</pre>
+
+      </div>
+
+<p>Gets the names of the dataframe columns.</p><h2 id="names/1-examples" class="section-heading">
+  <a href="#names/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="6142277209-1">(</span><span class="p" data-group-id="6142277209-2">%{</span><span class="ss">floats</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6142277209-3">[</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p" data-group-id="6142277209-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">ints</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6142277209-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="6142277209-4">]</span><span class="p" data-group-id="6142277209-2">}</span><span class="p" data-group-id="6142277209-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">names</span><span class="p" data-group-id="6142277209-5">(</span><span class="n">df</span><span class="p" data-group-id="6142277209-5">)</span><span class="w">
+</span><span class="p" data-group-id="6142277209-6">[</span><span class="s">&quot;floats&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ints&quot;</span><span class="p" data-group-id="6142277209-6">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="pull/2">
+
+  <div class="detail-header">
+    <a href="#pull/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pull(df, column)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L590" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Extracts a single column as a series.</p>
+  </section>
+</section>
+<section class="detail" id="read_csv/2">
+
+    <span id="read_csv/1"></span>
+
+  <div class="detail-header">
+    <a href="#read_csv/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">read_csv(filename, opts \\ [])</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L67" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>read_csv(filename :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), opts :: <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()) ::
+  {:ok, <a href="#t:t/0">t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+<p>Reads a delimited file into a dataframe.</p><h2 id="read_csv/2-options" class="section-heading">
+  <a href="#read_csv/2-options" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Options
+</h2>
+<ul><li><code class="inline">delimiter</code> - A single character used to separate fields within a record. (default: <code class="inline">&quot;,&quot;</code>)</li><li><code class="inline">dtypes</code> - A keyword list of <code class="inline">[column_name: dtype]</code>. If <code class="inline">nil</code>, dtypes are imputed from the first 1000 rows. (default: <code class="inline">nil</code>)</li><li><code class="inline">header?</code> - Does the file have a header of column names as the first row or not? (default: <code class="inline">true</code>)</li><li><code class="inline">max_rows</code> - Maximum number of lines to read. (default: <code class="inline">Inf</code>)</li><li><code class="inline">names</code> - A list of column names. Must match the width of the dataframe. (default: nil)</li><li><code class="inline">null_character</code> - The string that should be interpreted as a nil value. (default: <code class="inline">&quot;NA&quot;</code>)</li><li><code class="inline">skip_rows</code> - The number of lines to skip at the beginning of the file. (default: <code class="inline">0</code>)</li><li><code class="inline">with_columns</code> - A list of column names to keep. If present, only these columns are read</li><li>into the dataframe. (default: <code class="inline">nil</code>)</li></ul>
+  </section>
+</section>
+<section class="detail" id="read_csv!/2">
+
+    <span id="read_csv!/1"></span>
+
+  <div class="detail-header">
+    <a href="#read_csv!/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">read_csv!(filename, opts \\ [])</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L101" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>read_csv!(filename :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), opts :: <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Similar to <a href="#read_csv/2"><code class="inline">read_csv/2</code></a> but raises if there is a problem reading the CSV.</p>
+  </section>
+</section>
+<section class="detail" id="rename/2">
+
+  <div class="detail-header">
+    <a href="#rename/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">rename(df, names)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L441" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Renames columns.</p><p>To apply a function to a subset of columns, see <a href="#rename_with/3"><code class="inline">rename_with/3</code></a>.</p><h2 id="rename/2-examples" class="section-heading">
+  <a href="#rename/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<p>  You can pass in a list of new names:</p><pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="8122240928-1">(</span><span class="p" data-group-id="8122240928-2">%{</span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8122240928-3">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a&quot;</span><span class="p" data-group-id="8122240928-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8122240928-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="8122240928-4">]</span><span class="p" data-group-id="8122240928-2">}</span><span class="p" data-group-id="8122240928-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">rename</span><span class="p" data-group-id="8122240928-5">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8122240928-6">[</span><span class="s">&quot;c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;d&quot;</span><span class="p" data-group-id="8122240928-6">]</span><span class="p" data-group-id="8122240928-5">)</span><span class="w">
+</span><span class="p" data-group-id="8122240928-7">#</span><span class="nc" data-group-id="8122240928-7">Explorer.DataFrame</span><span class="p" data-group-id="8122240928-7">&lt;</span><span class="w">
+  </span><span class="p" data-group-id="8122240928-8">[</span><span class="ss">rows</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">columns</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="8122240928-8">]</span><span class="w">
+  </span><span class="n">c</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="p" data-group-id="8122240928-9">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a&quot;</span><span class="p" data-group-id="8122240928-9">]</span><span class="w">
+  </span><span class="n">d</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="8122240928-10">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="8122240928-10">]</span><span class="w">
+</span><span class="p" data-group-id="8122240928-7">&gt;</span></code></pre><p>  Or you can rename individual columns using keyword args:</p><pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="0635893911-1">(</span><span class="p" data-group-id="0635893911-2">%{</span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0635893911-3">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a&quot;</span><span class="p" data-group-id="0635893911-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0635893911-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="0635893911-4">]</span><span class="p" data-group-id="0635893911-2">}</span><span class="p" data-group-id="0635893911-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">rename</span><span class="p" data-group-id="0635893911-5">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;first&quot;</span><span class="p" data-group-id="0635893911-5">)</span><span class="w">
+</span><span class="p" data-group-id="0635893911-6">#</span><span class="nc" data-group-id="0635893911-6">Explorer.DataFrame</span><span class="p" data-group-id="0635893911-6">&lt;</span><span class="w">
+  </span><span class="p" data-group-id="0635893911-7">[</span><span class="ss">rows</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">columns</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="0635893911-7">]</span><span class="w">
+  </span><span class="n">first</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="p" data-group-id="0635893911-8">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a&quot;</span><span class="p" data-group-id="0635893911-8">]</span><span class="w">
+  </span><span class="n">b</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="0635893911-9">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="0635893911-9">]</span><span class="w">
+</span><span class="p" data-group-id="0635893911-6">&gt;</span></code></pre><p>  Or you can rename individual columns using a map:</p><pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="8989766638-1">(</span><span class="p" data-group-id="8989766638-2">%{</span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8989766638-3">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a&quot;</span><span class="p" data-group-id="8989766638-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8989766638-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="8989766638-4">]</span><span class="p" data-group-id="8989766638-2">}</span><span class="p" data-group-id="8989766638-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">rename</span><span class="p" data-group-id="8989766638-5">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8989766638-6">%{</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;first&quot;</span><span class="p" data-group-id="8989766638-6">}</span><span class="p" data-group-id="8989766638-5">)</span><span class="w">
+</span><span class="p" data-group-id="8989766638-7">#</span><span class="nc" data-group-id="8989766638-7">Explorer.DataFrame</span><span class="p" data-group-id="8989766638-7">&lt;</span><span class="w">
+  </span><span class="p" data-group-id="8989766638-8">[</span><span class="ss">rows</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">columns</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="8989766638-8">]</span><span class="w">
+  </span><span class="n">first</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="p" data-group-id="8989766638-9">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a&quot;</span><span class="p" data-group-id="8989766638-9">]</span><span class="w">
+  </span><span class="n">b</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="8989766638-10">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="8989766638-10">]</span><span class="w">
+</span><span class="p" data-group-id="8989766638-7">&gt;</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="rename_with/3">
+
+    <span id="rename_with/2"></span>
+
+  <div class="detail-header">
+    <a href="#rename_with/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">rename_with(df, callback, columns \\ [])</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L555" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Renames columns with a function.</p><h2 id="rename_with/3-examples" class="section-heading">
+  <a href="#rename_with/3-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<p>  If no columns are specified, it will apply the function to all column names:</p><pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.Datasets</span><span class="o">.</span><span class="n">fossil_fuels</span><span class="p" data-group-id="8347424242-1">(</span><span class="p" data-group-id="8347424242-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">rename_with</span><span class="p" data-group-id="8347424242-2">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">String</span><span class="o">.</span><span class="n">upcase</span><span class="o">/</span><span class="mi">1</span><span class="p" data-group-id="8347424242-2">)</span><span class="w">
+</span><span class="p" data-group-id="8347424242-3">#</span><span class="nc" data-group-id="8347424242-3">Explorer.DataFrame</span><span class="p" data-group-id="8347424242-3">&lt;</span><span class="w">
+  </span><span class="p" data-group-id="8347424242-4">[</span><span class="ss">rows</span><span class="p">:</span><span class="w"> </span><span class="mi">1094</span><span class="p">,</span><span class="w"> </span><span class="ss">columns</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="8347424242-4">]</span><span class="w">
+  </span><span class="nc">YEAR</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="8347424242-5">[</span><span class="mi">2010</span><span class="p">,</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="8347424242-5">]</span><span class="w">
+  </span><span class="nc">COUNTRY</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="p" data-group-id="8347424242-6">[</span><span class="s">&quot;AFGHANISTAN&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ALBANIA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ALGERIA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ANDORRA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ANGOLA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="8347424242-6">]</span><span class="w">
+  </span><span class="nc">TOTAL</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="8347424242-7">[</span><span class="mi">2308</span><span class="p">,</span><span class="w"> </span><span class="mi">1254</span><span class="p">,</span><span class="w"> </span><span class="mi">32500</span><span class="p">,</span><span class="w"> </span><span class="mi">141</span><span class="p">,</span><span class="w"> </span><span class="mi">7924</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="8347424242-7">]</span><span class="w">
+  </span><span class="nc">SOLID_FUEL</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="8347424242-8">[</span><span class="mi">627</span><span class="p">,</span><span class="w"> </span><span class="mi">117</span><span class="p">,</span><span class="w"> </span><span class="mi">332</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="8347424242-8">]</span><span class="w">
+  </span><span class="nc">LIQUID_FUEL</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="8347424242-9">[</span><span class="mi">1601</span><span class="p">,</span><span class="w"> </span><span class="mi">953</span><span class="p">,</span><span class="w"> </span><span class="mi">12381</span><span class="p">,</span><span class="w"> </span><span class="mi">141</span><span class="p">,</span><span class="w"> </span><span class="mi">3649</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="8347424242-9">]</span><span class="w">
+  </span><span class="nc">GAS_FUEL</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="8347424242-10">[</span><span class="mi">74</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">14565</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">374</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="8347424242-10">]</span><span class="w">
+  </span><span class="nc">CEMENT</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="8347424242-11">[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">177</span><span class="p">,</span><span class="w"> </span><span class="mi">2598</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">204</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="8347424242-11">]</span><span class="w">
+  </span><span class="nc">GAS_FLARING</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="8347424242-12">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2623</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3697</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="8347424242-12">]</span><span class="w">
+  </span><span class="nc">PER_CAPITA</span><span class="w"> </span><span class="n">float</span><span class="w"> </span><span class="p" data-group-id="8347424242-13">[</span><span class="mf">0.08</span><span class="p">,</span><span class="w"> </span><span class="mf">0.43</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w"> </span><span class="mf">1.68</span><span class="p">,</span><span class="w"> </span><span class="mf">0.37</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="8347424242-13">]</span><span class="w">
+  </span><span class="nc">BUNKER_FUELS</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="8347424242-14">[</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">663</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">321</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="8347424242-14">]</span><span class="w">
+</span><span class="p" data-group-id="8347424242-3">&gt;</span></code></pre><p>  A callback can be used to filter the column names that will be renamed, similarly to <a href="#select/3"><code class="inline">select/3</code></a>:</p><pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.Datasets</span><span class="o">.</span><span class="n">fossil_fuels</span><span class="p" data-group-id="6393038106-1">(</span><span class="p" data-group-id="6393038106-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">rename_with</span><span class="p" data-group-id="6393038106-2">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">String</span><span class="o">.</span><span class="n">trim_trailing</span><span class="p" data-group-id="6393038106-3">(</span><span class="ni">&amp;1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;_fuel&quot;</span><span class="p" data-group-id="6393038106-3">)</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">String</span><span class="o">.</span><span class="n">ends_with?</span><span class="p" data-group-id="6393038106-4">(</span><span class="ni">&amp;1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;_fuel&quot;</span><span class="p" data-group-id="6393038106-4">)</span><span class="p" data-group-id="6393038106-2">)</span><span class="w">
+</span><span class="p" data-group-id="6393038106-5">#</span><span class="nc" data-group-id="6393038106-5">Explorer.DataFrame</span><span class="p" data-group-id="6393038106-5">&lt;</span><span class="w">
+  </span><span class="p" data-group-id="6393038106-6">[</span><span class="ss">rows</span><span class="p">:</span><span class="w"> </span><span class="mi">1094</span><span class="p">,</span><span class="w"> </span><span class="ss">columns</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="6393038106-6">]</span><span class="w">
+  </span><span class="n">year</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="6393038106-7">[</span><span class="mi">2010</span><span class="p">,</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="6393038106-7">]</span><span class="w">
+  </span><span class="n">country</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="p" data-group-id="6393038106-8">[</span><span class="s">&quot;AFGHANISTAN&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ALBANIA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ALGERIA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ANDORRA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ANGOLA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="6393038106-8">]</span><span class="w">
+  </span><span class="n">total</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="6393038106-9">[</span><span class="mi">2308</span><span class="p">,</span><span class="w"> </span><span class="mi">1254</span><span class="p">,</span><span class="w"> </span><span class="mi">32500</span><span class="p">,</span><span class="w"> </span><span class="mi">141</span><span class="p">,</span><span class="w"> </span><span class="mi">7924</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="6393038106-9">]</span><span class="w">
+  </span><span class="n">solid</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="6393038106-10">[</span><span class="mi">627</span><span class="p">,</span><span class="w"> </span><span class="mi">117</span><span class="p">,</span><span class="w"> </span><span class="mi">332</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="6393038106-10">]</span><span class="w">
+  </span><span class="n">liquid</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="6393038106-11">[</span><span class="mi">1601</span><span class="p">,</span><span class="w"> </span><span class="mi">953</span><span class="p">,</span><span class="w"> </span><span class="mi">12381</span><span class="p">,</span><span class="w"> </span><span class="mi">141</span><span class="p">,</span><span class="w"> </span><span class="mi">3649</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="6393038106-11">]</span><span class="w">
+  </span><span class="n">gas</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="6393038106-12">[</span><span class="mi">74</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">14565</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">374</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="6393038106-12">]</span><span class="w">
+  </span><span class="n">cement</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="6393038106-13">[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">177</span><span class="p">,</span><span class="w"> </span><span class="mi">2598</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">204</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="6393038106-13">]</span><span class="w">
+  </span><span class="n">gas_flaring</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="6393038106-14">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2623</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3697</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="6393038106-14">]</span><span class="w">
+  </span><span class="n">per_capita</span><span class="w"> </span><span class="n">float</span><span class="w"> </span><span class="p" data-group-id="6393038106-15">[</span><span class="mf">0.08</span><span class="p">,</span><span class="w"> </span><span class="mf">0.43</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w"> </span><span class="mf">1.68</span><span class="p">,</span><span class="w"> </span><span class="mf">0.37</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="6393038106-15">]</span><span class="w">
+  </span><span class="n">bunker_fuels</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="6393038106-16">[</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">663</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">321</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="6393038106-16">]</span><span class="w">
+</span><span class="p" data-group-id="6393038106-5">&gt;</span></code></pre><p>  Or you can just pass in the list of column names you'd like to apply the function to:</p><pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.Datasets</span><span class="o">.</span><span class="n">fossil_fuels</span><span class="p" data-group-id="7597289598-1">(</span><span class="p" data-group-id="7597289598-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">rename_with</span><span class="p" data-group-id="7597289598-2">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">String</span><span class="o">.</span><span class="n">upcase</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7597289598-3">[</span><span class="s">&quot;total&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;cement&quot;</span><span class="p" data-group-id="7597289598-3">]</span><span class="p" data-group-id="7597289598-2">)</span><span class="w">
+</span><span class="p" data-group-id="7597289598-4">#</span><span class="nc" data-group-id="7597289598-4">Explorer.DataFrame</span><span class="p" data-group-id="7597289598-4">&lt;</span><span class="w">
+  </span><span class="p" data-group-id="7597289598-5">[</span><span class="ss">rows</span><span class="p">:</span><span class="w"> </span><span class="mi">1094</span><span class="p">,</span><span class="w"> </span><span class="ss">columns</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="7597289598-5">]</span><span class="w">
+  </span><span class="n">year</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="7597289598-6">[</span><span class="mi">2010</span><span class="p">,</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="7597289598-6">]</span><span class="w">
+  </span><span class="n">country</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="p" data-group-id="7597289598-7">[</span><span class="s">&quot;AFGHANISTAN&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ALBANIA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ALGERIA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ANDORRA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ANGOLA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="7597289598-7">]</span><span class="w">
+  </span><span class="nc">TOTAL</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="7597289598-8">[</span><span class="mi">2308</span><span class="p">,</span><span class="w"> </span><span class="mi">1254</span><span class="p">,</span><span class="w"> </span><span class="mi">32500</span><span class="p">,</span><span class="w"> </span><span class="mi">141</span><span class="p">,</span><span class="w"> </span><span class="mi">7924</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="7597289598-8">]</span><span class="w">
+  </span><span class="n">solid_fuel</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="7597289598-9">[</span><span class="mi">627</span><span class="p">,</span><span class="w"> </span><span class="mi">117</span><span class="p">,</span><span class="w"> </span><span class="mi">332</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="7597289598-9">]</span><span class="w">
+  </span><span class="n">liquid_fuel</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="7597289598-10">[</span><span class="mi">1601</span><span class="p">,</span><span class="w"> </span><span class="mi">953</span><span class="p">,</span><span class="w"> </span><span class="mi">12381</span><span class="p">,</span><span class="w"> </span><span class="mi">141</span><span class="p">,</span><span class="w"> </span><span class="mi">3649</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="7597289598-10">]</span><span class="w">
+  </span><span class="n">gas_fuel</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="7597289598-11">[</span><span class="mi">74</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">14565</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">374</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="7597289598-11">]</span><span class="w">
+  </span><span class="nc">CEMENT</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="7597289598-12">[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">177</span><span class="p">,</span><span class="w"> </span><span class="mi">2598</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">204</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="7597289598-12">]</span><span class="w">
+  </span><span class="n">gas_flaring</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="7597289598-13">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2623</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3697</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="7597289598-13">]</span><span class="w">
+  </span><span class="n">per_capita</span><span class="w"> </span><span class="n">float</span><span class="w"> </span><span class="p" data-group-id="7597289598-14">[</span><span class="mf">0.08</span><span class="p">,</span><span class="w"> </span><span class="mf">0.43</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w"> </span><span class="mf">1.68</span><span class="p">,</span><span class="w"> </span><span class="mf">0.37</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="7597289598-14">]</span><span class="w">
+  </span><span class="n">bunker_fuels</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="7597289598-15">[</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">663</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">321</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p" data-group-id="7597289598-15">]</span><span class="w">
+</span><span class="p" data-group-id="7597289598-4">&gt;</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="select/3">
+
+    <span id="select/2"></span>
+
+  <div class="detail-header">
+    <a href="#select/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">select(df, cols_or_callback, keep_or_drop \\ :keep)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L281" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>select(
+  df :: <a href="#t:t/0">t</a>(),
+  cols_or_callback :: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()] | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">function</a>(),
+  keep_or_drop :: :keep | :drop
+) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Selects a subset of columns by name.</p><p>Can optionally return all <em>but</em> the named columns if <code class="inline">:drop</code> is passed as the last argument.</p><h2 id="select/3-examples" class="section-heading">
+  <a href="#select/3-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<p>  You can select columns with a list of names:</p><pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="0611144003-1">(</span><span class="p" data-group-id="0611144003-2">%{</span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0611144003-3">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p" data-group-id="0611144003-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0611144003-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="0611144003-4">]</span><span class="p" data-group-id="0611144003-2">}</span><span class="p" data-group-id="0611144003-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">select</span><span class="p" data-group-id="0611144003-5">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0611144003-6">[</span><span class="s">&quot;a&quot;</span><span class="p" data-group-id="0611144003-6">]</span><span class="p" data-group-id="0611144003-5">)</span><span class="w">
+</span><span class="p" data-group-id="0611144003-7">#</span><span class="nc" data-group-id="0611144003-7">Explorer.DataFrame</span><span class="p" data-group-id="0611144003-7">&lt;</span><span class="w">
+  </span><span class="p" data-group-id="0611144003-8">[</span><span class="ss">rows</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">columns</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="0611144003-8">]</span><span class="w">
+  </span><span class="n">a</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="p" data-group-id="0611144003-9">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p" data-group-id="0611144003-9">]</span><span class="w">
+</span><span class="p" data-group-id="0611144003-7">&gt;</span></code></pre><p>  Or you can use a callback function that takes the dataframe's names as its first argument:</p><pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="7173204422-1">(</span><span class="p" data-group-id="7173204422-2">%{</span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7173204422-3">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p" data-group-id="7173204422-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7173204422-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="7173204422-4">]</span><span class="p" data-group-id="7173204422-2">}</span><span class="p" data-group-id="7173204422-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">select</span><span class="p" data-group-id="7173204422-5">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">String</span><span class="o">.</span><span class="n">starts_with?</span><span class="p" data-group-id="7173204422-6">(</span><span class="ni">&amp;1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p" data-group-id="7173204422-6">)</span><span class="p" data-group-id="7173204422-5">)</span><span class="w">
+</span><span class="p" data-group-id="7173204422-7">#</span><span class="nc" data-group-id="7173204422-7">Explorer.DataFrame</span><span class="p" data-group-id="7173204422-7">&lt;</span><span class="w">
+  </span><span class="p" data-group-id="7173204422-8">[</span><span class="ss">rows</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">columns</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="7173204422-8">]</span><span class="w">
+  </span><span class="n">b</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="p" data-group-id="7173204422-9">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="7173204422-9">]</span><span class="w">
+</span><span class="p" data-group-id="7173204422-7">&gt;</span></code></pre><p>  If you pass <code class="inline">:drop</code> as the third argument, it will return all but the named columns:</p><pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="2180616479-1">(</span><span class="p" data-group-id="2180616479-2">%{</span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2180616479-3">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p" data-group-id="2180616479-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2180616479-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="2180616479-4">]</span><span class="p" data-group-id="2180616479-2">}</span><span class="p" data-group-id="2180616479-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">select</span><span class="p" data-group-id="2180616479-5">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2180616479-6">[</span><span class="s">&quot;b&quot;</span><span class="p" data-group-id="2180616479-6">]</span><span class="p">,</span><span class="w"> </span><span class="ss">:drop</span><span class="p" data-group-id="2180616479-5">)</span><span class="w">
+</span><span class="p" data-group-id="2180616479-7">#</span><span class="nc" data-group-id="2180616479-7">Explorer.DataFrame</span><span class="p" data-group-id="2180616479-7">&lt;</span><span class="w">
+  </span><span class="p" data-group-id="2180616479-8">[</span><span class="ss">rows</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">columns</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="2180616479-8">]</span><span class="w">
+  </span><span class="n">a</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="p" data-group-id="2180616479-9">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p" data-group-id="2180616479-9">]</span><span class="w">
+</span><span class="p" data-group-id="2180616479-7">&gt;</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="shape/1">
+
+  <div class="detail-header">
+    <a href="#shape/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">shape(df)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L209" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>shape(df :: <a href="#t:t/0">t</a>()) :: {<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()}</pre>
+
+      </div>
+
+<p>Gets the shape of the dataframe as a <code class="inline">{height, width}</code> tuple.</p><h2 id="shape/1-examples" class="section-heading">
+  <a href="#shape/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="9717790247-1">(</span><span class="p" data-group-id="9717790247-2">%{</span><span class="ss">floats</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9717790247-3">[</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p" data-group-id="9717790247-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">ints</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9717790247-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="9717790247-4">]</span><span class="p" data-group-id="9717790247-2">}</span><span class="p" data-group-id="9717790247-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">shape</span><span class="p" data-group-id="9717790247-5">(</span><span class="n">df</span><span class="p" data-group-id="9717790247-5">)</span><span class="w">
+</span><span class="p" data-group-id="9717790247-6">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="9717790247-6">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="slice/3">
+
+  <div class="detail-header">
+    <a href="#slice/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">slice(df, offset, length)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L597" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Subset a continuous set of rows.</p><p>Negative offset will be counted from the end of the dataframe.</p>
+  </section>
+</section>
+<section class="detail" id="tail/2">
+
+    <span id="tail/1"></span>
+
+  <div class="detail-header">
+    <a href="#tail/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">tail(df, nrows \\ 6)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L239" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Returns the last <em>n</em> rows of the dataframe.</p>
+  </section>
+</section>
+<section class="detail" id="take/2">
+
+  <div class="detail-header">
+    <a href="#take/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">take(df, row_indices)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L602" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Subset rows with a list of indices.</p>
+  </section>
+</section>
+<section class="detail" id="to_map/2">
+
+    <span id="to_map/1"></span>
+
+  <div class="detail-header">
+    <a href="#to_map/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_map(df, convert_series? \\ true)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L171" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>to_map(df :: <a href="#t:t/0">t</a>(), convert_series? :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()</pre>
+
+      </div>
+
+<p>Converts a dataframe to a map.</p><p>By default, the constituent series of the dataframe are converted to Elixir lists.</p><h2 id="to_map/2-examples" class="section-heading">
+  <a href="#to_map/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="2043225158-1">(</span><span class="p" data-group-id="2043225158-2">%{</span><span class="ss">floats</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2043225158-3">[</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p" data-group-id="2043225158-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">ints</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2043225158-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="2043225158-4">]</span><span class="p" data-group-id="2043225158-2">}</span><span class="p" data-group-id="2043225158-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer.DataFrame</span><span class="o">.</span><span class="n">to_map</span><span class="p" data-group-id="2043225158-5">(</span><span class="n">df</span><span class="p" data-group-id="2043225158-5">)</span><span class="w">
+</span><span class="p" data-group-id="2043225158-6">%{</span><span class="ss">floats</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2043225158-7">[</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p" data-group-id="2043225158-7">]</span><span class="p">,</span><span class="w"> </span><span class="ss">ints</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2043225158-8">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="2043225158-8">]</span><span class="p" data-group-id="2043225158-6">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="write_csv/3">
+
+    <span id="write_csv/2"></span>
+
+  <div class="detail-header">
+    <a href="#write_csv/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">write_csv(df, filename, opts \\ [])</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L118" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>write_csv(df :: <a href="#t:t/0">t</a>(), filename :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), opts :: <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+<p>Writes a dataframe to a delimited file.</p><h2 id="write_csv/3-options" class="section-heading">
+  <a href="#write_csv/3-options" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Options
+</h2>
+<ul><li><code class="inline">header?</code> - Should the column names be written as the first line of the file? (default: <code class="inline">true</code>)</li><li><code class="inline">delimiter</code> - A single character used to separate fields within a record. (default: <code class="inline">&quot;,&quot;</code>)</li></ul>
+  </section>
+</section>
+<section class="detail" id="write_csv!/3">
+
+    <span id="write_csv!/2"></span>
+
+  <div class="detail-header">
+    <a href="#write_csv!/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">write_csv!(df, filename, opts \\ [])</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/data_frame.ex#L127" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>write_csv!(df :: <a href="#t:t/0">t</a>(), filename :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), opts :: <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+<p>Similar to <a href="#write_csv/3"><code class="inline">write_csv/3</code></a> but raises if there is a problem reading the CSV.</p>
+  </section>
+</section>
+
+          </div>
+        </section>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.25.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>
