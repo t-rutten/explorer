@@ -10,7 +10,7 @@
     <title>Explorer.Backend.DataFrame — Explorer v0.1.0-dev</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-2b98db36f9.js"></script>
+    <script src="dist/sidebar_items-df9b6783f2.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -152,7 +152,7 @@ Explorer.Backend.DataFrame <small>behaviour</small> <small class="app-vsn">(Expl
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#c:arrange/3">arrange(df, columns, direction)</a>
+    <a href="#c:arrange/2">arrange(df, columns)</a>
 
   </div>
 
@@ -484,14 +484,14 @@ Types
 Callbacks
           </h1>
           <div class="callbacks-list">
-<section class="detail" id="c:arrange/3">
+<section class="detail" id="c:arrange/2">
 
   <div class="detail-header">
-    <a href="#c:arrange/3" class="detail-link" title="Link to this callback">
+    <a href="#c:arrange/2" class="detail-link" title="Link to this callback">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this callback</span>
     </a>
-    <h1 class="signature">arrange(df, columns, direction)</h1>
+    <h1 class="signature">arrange(df, columns)</h1>
 
       <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L50" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
@@ -506,7 +506,7 @@ Callbacks
       <h2>Specs</h2>
       <div class="specs">
 
-          <pre>arrange(<a href="#t:df/0">df</a>(), columns :: [<a href="#t:colname/0">colname</a>()], direction :: :asc | :desc) :: <a href="#t:df/0">df</a>()</pre>
+          <pre>arrange(<a href="#t:df/0">df</a>(), columns :: [<a href="#t:colname/0">colname</a>() | {<a href="#t:colname/0">colname</a>(), :asc | :desc}]) :: <a href="#t:df/0">df</a>()</pre>
 
       </div>
 
