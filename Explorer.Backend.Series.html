@@ -10,7 +10,7 @@
     <title>Explorer.Backend.Series — Explorer v0.1.0-dev</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-df9b6783f2.js"></script>
+    <script src="dist/sidebar_items-c713543879.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -411,7 +411,7 @@ Explorer.Backend.Series <small>behaviour</small> <small class="app-vsn">(Explore
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#c:sample/3">sample(s, number, with_replacement)</a>
+    <a href="#c:sample/4">sample(s, n, with_replacement, seed)</a>
 
   </div>
 
@@ -1754,14 +1754,14 @@ Callbacks
 
   </section>
 </section>
-<section class="detail" id="c:sample/3">
+<section class="detail" id="c:sample/4">
 
   <div class="detail-header">
-    <a href="#c:sample/3" class="detail-link" title="Link to this callback">
+    <a href="#c:sample/4" class="detail-link" title="Link to this callback">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this callback</span>
     </a>
-    <h1 class="signature">sample(s, number, with_replacement)</h1>
+    <h1 class="signature">sample(s, n, with_replacement, seed)</h1>
 
       <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/backend/series.ex#L26" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
@@ -1776,7 +1776,8 @@ Callbacks
       <h2>Specs</h2>
       <div class="specs">
 
-          <pre>sample(<a href="#t:s/0">s</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>(), with_replacement :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()) :: <a href="#t:s/0">s</a>()</pre>
+          <pre>sample(<a href="#t:s/0">s</a>(), n :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), with_replacement :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(), seed :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()) ::
+  <a href="#t:s/0">s</a>()</pre>
 
       </div>
 

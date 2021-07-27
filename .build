@@ -4,8 +4,6 @@ Explorer.Backend.Series.html
 Explorer.Backend.html
 Explorer.DataFrame.html
 Explorer.Datasets.html
-Explorer.PolarsBackend.DataFrame.html
-Explorer.PolarsBackend.Series.html
 Explorer.PolarsBackend.html
 Explorer.Series.html
 Explorer.html
@@ -16,7 +14,7 @@ dist/html/fonts/icomoon.eot
 dist/html/fonts/icomoon.svg
 dist/html/fonts/icomoon.ttf
 dist/html/fonts/icomoon.woff
-dist/search_items-13668216fa.js
-dist/sidebar_items-df9b6783f2.js
+dist/search_items-824d63ad11.js
+dist/sidebar_items-c713543879.js
 index.html
 search.html
