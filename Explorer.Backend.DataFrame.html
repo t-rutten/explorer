@@ -10,7 +10,7 @@
     <title>Explorer.Backend.DataFrame — Explorer v0.1.0-dev</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-c713543879.js"></script>
+    <script src="dist/sidebar_items-da01567b43.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -166,6 +166,13 @@ Explorer.Backend.DataFrame <small>behaviour</small> <small class="app-vsn">(Expl
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#c:drop_nil/2">drop_nil(df, columns)</a>
+
+  </div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#c:dtypes/1">dtypes(df)</a>
 
   </div>
@@ -188,6 +195,13 @@ Explorer.Backend.DataFrame <small>behaviour</small> <small class="app-vsn">(Expl
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#c:from_map/1">from_map(map)</a>
+
+  </div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:group_by/2">group_by(df, columns)</a>
 
   </div>
 
@@ -285,6 +299,13 @@ Explorer.Backend.DataFrame <small>behaviour</small> <small class="app-vsn">(Expl
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#c:summarise/2">summarise(df, aggregations)</a>
+
+  </div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#c:tail/2">tail(df, rows)</a>
 
   </div>
@@ -300,6 +321,13 @@ Explorer.Backend.DataFrame <small>behaviour</small> <small class="app-vsn">(Expl
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#c:to_map/2">to_map(df, convert_series?)</a>
+
+  </div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:ungroup/2">ungroup(df, columns)</a>
 
   </div>
 
@@ -542,6 +570,35 @@ Callbacks
 
   </section>
 </section>
+<section class="detail" id="c:drop_nil/2">
+
+  <div class="detail-header">
+    <a href="#c:drop_nil/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">drop_nil(df, columns)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L58" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>drop_nil(<a href="#t:df/0">df</a>(), columns :: [<a href="#t:colname/0">colname</a>()]) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
 <section class="detail" id="c:dtypes/1">
 
   <div class="detail-header">
@@ -658,6 +715,35 @@ Callbacks
 
   </section>
 </section>
+<section class="detail" id="c:group_by/2">
+
+  <div class="detail-header">
+    <a href="#c:group_by/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">group_by(df, columns)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L72" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>group_by(<a href="#t:df/0">df</a>(), columns :: [<a href="#t:colname/0">colname</a>()]) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
 <section class="detail" id="c:head/2">
 
   <div class="detail-header">
@@ -696,7 +782,7 @@ Callbacks
     </a>
     <h1 class="signature">join(left, right, how, on)</h1>
 
-      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L67" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L68" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1052,6 +1138,35 @@ Callbacks
 
   </section>
 </section>
+<section class="detail" id="c:summarise/2">
+
+  <div class="detail-header">
+    <a href="#c:summarise/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">summarise(df, aggregations)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L74" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>summarise(<a href="#t:df/0">df</a>(), aggregations :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
 <section class="detail" id="c:tail/2">
 
   <div class="detail-header">
@@ -1133,6 +1248,35 @@ Callbacks
       <div class="specs">
 
           <pre>to_map(<a href="#t:df/0">df</a>(), convert_series? :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:ungroup/2">
+
+  <div class="detail-header">
+    <a href="#c:ungroup/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">ungroup(df, columns)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L73" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>ungroup(<a href="#t:df/0">df</a>(), columns :: [<a href="#t:colname/0">colname</a>()]) :: <a href="#t:df/0">df</a>()</pre>
 
       </div>
 
