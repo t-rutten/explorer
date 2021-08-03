@@ -10,7 +10,7 @@
     <title>Explorer.Backend.DataFrame — Explorer v0.1.0-dev</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-3cc85960c9.js"></script>
+    <script src="dist/sidebar_items-b5c6580fa0.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -251,6 +251,13 @@ Explorer.Backend.DataFrame <small>behaviour</small> <small class="app-vsn">(Expl
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#c:pivot_longer/5">pivot_longer(df, id_cols, value_cols, names_to, values_to)</a>
+
+  </div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:pivot_wider/5">pivot_wider(df, id_cols, names_from, values_from, names_prefix)</a>
 
   </div>
 
@@ -731,7 +738,7 @@ Callbacks
     </a>
     <h1 class="signature">group_by(df, columns)</h1>
 
-      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L79" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L87" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -789,7 +796,7 @@ Callbacks
     </a>
     <h1 class="signature">join(left, right, how, on)</h1>
 
-      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L75" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L83" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -939,7 +946,7 @@ Callbacks
     </a>
     <h1 class="signature">pivot_longer(df, id_cols, value_cols, names_to, values_to)</h1>
 
-      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L65" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L73" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -958,6 +965,41 @@ Callbacks
   value_cols :: [<a href="#t:colname/0">colname</a>()],
   names_to :: <a href="#t:colname/0">colname</a>(),
   values_to :: <a href="#t:colname/0">colname</a>()
+) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:pivot_wider/5">
+
+  <div class="detail-header">
+    <a href="#c:pivot_wider/5" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">pivot_wider(df, id_cols, names_from, values_from, names_prefix)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L66" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>pivot_wider(
+  <a href="#t:df/0">df</a>(),
+  id_cols :: [<a href="#t:colname/0">colname</a>()],
+  names_from :: [<a href="#t:colname/0">colname</a>()],
+  values_from :: [<a href="#t:colname/0">colname</a>()],
+  names_prefix :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()
 ) :: <a href="#t:df/0">df</a>()</pre>
 
       </div>
@@ -1189,7 +1231,7 @@ Callbacks
     </a>
     <h1 class="signature">summarise(df, aggregations)</h1>
 
-      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L81" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L89" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1305,7 +1347,7 @@ Callbacks
     </a>
     <h1 class="signature">ungroup(df, columns)</h1>
 
-      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L80" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L88" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
