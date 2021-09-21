@@ -820,7 +820,7 @@ Callbacks
   left :: <a href="#t:df/0">df</a>(),
   right :: <a href="#t:df/0">df</a>(),
   how :: :left | :inner | :outer | :right | :cross,
-  on :: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()]
+  on :: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | {<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}]
 ) :: <a href="#t:df/0">df</a>()</pre>
 
       </div>
@@ -1068,7 +1068,7 @@ Callbacks
           <pre>read_csv(
   filename :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
   names :: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()] | nil,
-  dtypes :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()] | nil,
+  dtypes :: [{<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}] | nil,
   delimiter :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
   null_character :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
   skip_rows :: Integer.t(),
