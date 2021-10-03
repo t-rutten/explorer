@@ -92,8 +92,10 @@ Explorer <small class="app-vsn">(Explorer v0.1.0-dev)</small>
 
         <section id="moduledoc">
 <p>Dataframes for Elixir.</p><p>The <a href="Explorer.html#content"><code class="inline">Explorer</code></a> library is a set of functions and data types to work with tabular data in Elixir.</p><p>Most of the functionality in <a href="Explorer.html#content"><code class="inline">Explorer</code></a> is in <a href="Explorer.DataFrame.html"><code class="inline">Explorer.DataFrame</code></a> and <a href="Explorer.Series.html"><code class="inline">Explorer.Series</code></a>. This
-module handles the default backend for <a href="Explorer.html#content"><code class="inline">Explorer</code></a>. As there is currently only one backend for
-<a href="Explorer.html#content"><code class="inline">Explorer</code></a>, you should not use the functions in this module.</p>
+module handles the default backend for <a href="Explorer.html#content"><code class="inline">Explorer</code></a>. The default backend is read from the application
+environment. When alternatives are available, you can use them by configuring your runtime:</p><pre><code class="makeup elixir"><span class="c1"># config/runtime.exs</span><span class="w">
+</span><span class="kn">import</span><span class="w"> </span><span class="nc">Config</span><span class="w">
+</span><span class="n">config</span><span class="w"> </span><span class="ss">:explorer</span><span class="p">,</span><span class="w"> </span><span class="ss">default_backend</span><span class="p">:</span><span class="w"> </span><span class="nc">Lib.CustomBackend</span></code></pre>
         </section>
 
 
@@ -152,7 +154,7 @@ Functions
     </a>
     <h1 class="signature">default_backend()</h1>
 
-      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer.ex#L36" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer.ex#L40" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -174,7 +176,7 @@ Functions
     </a>
     <h1 class="signature">default_backend(backend)</h1>
 
-      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer.ex#L29" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer.ex#L32" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -189,9 +191,9 @@ separate process, such as <a href="https://hexdocs.pm/elixir/Task.html"><code cl
   <a href="#default_backend/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
-<pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer</span><span class="o">.</span><span class="n">default_backend</span><span class="p" data-group-id="6495076989-1">(</span><span class="nc">Lib.CustomBackend</span><span class="p" data-group-id="6495076989-1">)</span><span class="w">
+<pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer</span><span class="o">.</span><span class="n">default_backend</span><span class="p" data-group-id="4074689359-1">(</span><span class="nc">Lib.CustomBackend</span><span class="p" data-group-id="4074689359-1">)</span><span class="w">
 </span><span class="nc">Explorer.PolarsBackend</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer</span><span class="o">.</span><span class="n">default_backend</span><span class="p" data-group-id="6495076989-2">(</span><span class="p" data-group-id="6495076989-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer</span><span class="o">.</span><span class="n">default_backend</span><span class="p" data-group-id="4074689359-2">(</span><span class="p" data-group-id="4074689359-2">)</span><span class="w">
 </span><span class="nc">Lib.CustomBackend</span></code></pre>
   </section>
 </section>
