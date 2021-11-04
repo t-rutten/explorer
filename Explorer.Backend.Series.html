@@ -10,7 +10,7 @@
     <title>Explorer.Backend.Series — Explorer v0.1.0-dev</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-7cd50f4019.js"></script>
+    <script src="dist/sidebar_items-42dc8dbe63.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -313,13 +313,6 @@ Explorer.Backend.Series <small>behaviour</small> <small class="app-vsn">(Explore
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#c:map/2">map(s, function)</a>
-
-  </div>
-
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
     <a href="#c:max/1">max(s)</a>
 
   </div>
@@ -503,6 +496,13 @@ Explorer.Backend.Series <small>behaviour</small> <small class="app-vsn">(Explore
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#c:to_list/1">to_list(s)</a>
+
+  </div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:transform/2">transform(s, function)</a>
 
   </div>
 
@@ -1356,35 +1356,6 @@ Callbacks
 
   </section>
 </section>
-<section class="detail" id="c:map/2">
-
-  <div class="detail-header">
-    <a href="#c:map/2" class="detail-link" title="Link to this callback">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this callback</span>
-    </a>
-    <h1 class="signature">map(s, function)</h1>
-
-      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/backend/series.ex#L109" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
-
-      <h2>Specs</h2>
-      <div class="specs">
-
-          <pre>map(<a href="#t:s/0">s</a>(), (... -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>())) :: <a href="#t:s/0">s</a>()</pre>
-
-      </div>
-
-
-  </section>
-</section>
 <section class="detail" id="c:max/1">
 
   <div class="detail-header">
@@ -2183,6 +2154,35 @@ Callbacks
       <div class="specs">
 
           <pre>to_list(<a href="#t:s/0">s</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:transform/2">
+
+  <div class="detail-header">
+    <a href="#c:transform/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">transform(s, function)</h1>
+
+      <a href="https://github.com/amplifiedai/explorer/blob/v0.1.0-dev/lib/explorer/backend/series.ex#L109" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>transform(<a href="#t:s/0">s</a>(), (... -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>())) :: <a href="#t:s/0">s</a>()</pre>
 
       </div>
 
