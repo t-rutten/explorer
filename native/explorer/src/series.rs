@@ -1,3 +1,4 @@
+use polars::datatypes::DataType::{Boolean, Date, Float64, Int64, Time, Utf8};
 use polars::prelude::*;
 use rand::seq::IteratorRandom;
 use rand::{Rng, SeedableRng};
@@ -27,22 +28,18 @@ macro_rules! init_method {
             ExSeries::new(Series::new(name, val.as_slice()))
         }
     };
-    ($name:ident, $type:ty, $cast_type:ty) => {
+    ($name:ident, $type:ty, $cast_type:ident) => {
         #[rustler::nif]
         pub fn $name(name: &str, val: Vec<Option<$type>>) -> ExSeries {
-            ExSeries::new(
-                Series::new(name, val.as_slice())
-                    .cast::<$cast_type>()
-                    .unwrap(),
-            )
+            ExSeries::new(Series::new(name, val.as_slice()).cast(&$cast_type).unwrap())
         }
     };
 }
 
 init_method!(s_new_i64, i64);
 init_method!(s_new_bool, bool);
-init_method!(s_new_date32, &str, Date32Type);
-init_method!(s_new_date64, &str, Date64Type);
+init_method!(s_new_date32, &str, Date);
+init_method!(s_new_date64, &str, Time);
 init_method!(s_new_f64, f64);
 init_method!(s_new_str, String);
 
@@ -175,9 +172,7 @@ pub fn s_unique(data: ExSeries) -> Result<ExSeries, ExplorerError> {
 pub fn s_value_counts(data: ExSeries) -> Result<ExDataFrame, ExplorerError> {
     let s = &data.resource.0;
     let mut df = s.value_counts()?;
-    let df = df
-        .may_apply("counts", |s: &Series| s.cast::<Int64Type>())?
-        .clone();
+    let df = df.may_apply("counts", |s: &Series| s.cast(&Int64))?.clone();
     Ok(ExDataFrame::new(df))
 }
 
@@ -435,7 +430,7 @@ pub fn s_str_to_lowercase(data: ExSeries) -> Result<ExSeries, ExplorerError> {
 pub fn s_str_parse_date32(data: ExSeries, fmt: Option<&str>) -> Result<ExSeries, ExplorerError> {
     let s = &data.resource.0;
     if let Ok(ca) = s.utf8() {
-        let ca = ca.as_date32(fmt)?;
+        let ca = ca.as_date(fmt)?;
         Ok(ExSeries::new(ca.into_series()))
     } else {
         Err(ExplorerError::Other(
@@ -448,7 +443,7 @@ pub fn s_str_parse_date32(data: ExSeries, fmt: Option<&str>) -> Result<ExSeries,
 pub fn s_str_parse_date64(data: ExSeries, fmt: Option<&str>) -> Result<ExSeries, ExplorerError> {
     let s = &data.resource.0;
     if let Ok(ca) = s.utf8() {
-        let ca = ca.as_date64(fmt)?;
+        let ca = ca.as_time(fmt)?;
         Ok(ExSeries::new(ca.into_series()))
     } else {
         Err(ExplorerError::Other(
@@ -467,10 +462,9 @@ pub fn s_to_dummies(data: ExSeries) -> Result<ExDataFrame, ExplorerError> {
 #[rustler::nif]
 pub fn s_rolling_sum(
     data: ExSeries,
-    window_size: u32,
-    weight: Option<Vec<f64>>,
-    ignore_null: bool,
-    min_periods: Option<u32>,
+    window_size: usize,
+    weights: Option<Vec<f64>>,
+    min_periods: Option<usize>,
 ) -> Result<ExSeries, ExplorerError> {
     let s = &data.resource.0;
     let min_periods = if let Some(mp) = min_periods {
@@ -478,17 +472,21 @@ pub fn s_rolling_sum(
     } else {
         window_size
     };
-    let s1 = s.rolling_sum(window_size, weight.as_deref(), ignore_null, min_periods)?;
+    let s1 = s.rolling_sum(RollingOptions {
+        window_size,
+        weights,
+        min_periods,
+        center: false,
+    })?;
     Ok(ExSeries::new(s1))
 }
 
 #[rustler::nif]
 pub fn s_rolling_mean(
     data: ExSeries,
-    window_size: u32,
-    weight: Option<Vec<f64>>,
-    ignore_null: bool,
-    min_periods: Option<u32>,
+    window_size: usize,
+    weights: Option<Vec<f64>>,
+    min_periods: Option<usize>,
 ) -> Result<ExSeries, ExplorerError> {
     let min_periods = if let Some(mp) = min_periods {
         mp
@@ -496,17 +494,21 @@ pub fn s_rolling_mean(
         window_size
     };
     let s = &data.resource.0;
-    let s1 = s.rolling_mean(window_size, weight.as_deref(), ignore_null, min_periods)?;
+    let s1 = s.rolling_mean(RollingOptions {
+        window_size,
+        weights,
+        min_periods,
+        center: false,
+    })?;
     Ok(ExSeries::new(s1))
 }
 
 #[rustler::nif]
 pub fn s_rolling_max(
     data: ExSeries,
-    window_size: u32,
-    weight: Option<Vec<f64>>,
-    ignore_null: bool,
-    min_periods: Option<u32>,
+    window_size: usize,
+    weights: Option<Vec<f64>>,
+    min_periods: Option<usize>,
 ) -> Result<ExSeries, ExplorerError> {
     let min_periods = if let Some(mp) = min_periods {
         mp
@@ -514,17 +516,21 @@ pub fn s_rolling_max(
         window_size
     };
     let s = &data.resource.0;
-    let s1 = s.rolling_max(window_size, weight.as_deref(), ignore_null, min_periods)?;
+    let s1 = s.rolling_max(RollingOptions {
+        window_size,
+        weights,
+        min_periods,
+        center: false,
+    })?;
     Ok(ExSeries::new(s1))
 }
 
 #[rustler::nif]
 pub fn s_rolling_min(
     data: ExSeries,
-    window_size: u32,
-    weight: Option<Vec<f64>>,
-    ignore_null: bool,
-    min_periods: Option<u32>,
+    window_size: usize,
+    weights: Option<Vec<f64>>,
+    min_periods: Option<usize>,
 ) -> Result<ExSeries, ExplorerError> {
     let min_periods = if let Some(mp) = min_periods {
         mp
@@ -532,7 +538,12 @@ pub fn s_rolling_min(
         window_size
     };
     let s = &data.resource.0;
-    let s1 = s.rolling_min(window_size, weight.as_deref(), ignore_null, min_periods)?;
+    let s1 = s.rolling_min(RollingOptions {
+        window_size,
+        weights,
+        min_periods,
+        center: false,
+    })?;
     Ok(ExSeries::new(s1))
 }
 
@@ -559,8 +570,8 @@ pub fn s_min(env: Env, data: ExSeries) -> Result<Term, ExplorerError> {
     match s.dtype() {
         DataType::Int64 => Ok(s.min::<i64>().encode(env)),
         DataType::Float64 => Ok(s.min::<f64>().encode(env)),
-        DataType::Date32 => Ok(s.min::<i32>().encode(env)),
-        DataType::Date64 => Ok(s.min::<i64>().encode(env)),
+        DataType::Date => Ok(s.min::<i32>().encode(env)),
+        DataType::Time => Ok(s.min::<i64>().encode(env)),
         dt => panic!("min/1 not implemented for {:?}", dt),
     }
 }
@@ -571,8 +582,8 @@ pub fn s_max(env: Env, data: ExSeries) -> Result<Term, ExplorerError> {
     match s.dtype() {
         DataType::Int64 => Ok(s.max::<i64>().encode(env)),
         DataType::Float64 => Ok(s.max::<f64>().encode(env)),
-        DataType::Date32 => Ok(s.max::<i32>().encode(env)),
-        DataType::Date64 => Ok(s.max::<i64>().encode(env)),
+        DataType::Date => Ok(s.max::<i32>().encode(env)),
+        DataType::Time => Ok(s.max::<i64>().encode(env)),
         dt => panic!("max/1 not implemented for {:?}", dt),
     }
 }
@@ -627,8 +638,8 @@ pub fn s_get(env: Env, data: ExSeries, idx: usize) -> Result<Term, ExplorerError
         AnyValue::Utf8(v) => Some(v).encode(env),
         AnyValue::Int64(v) => Some(v).encode(env),
         AnyValue::Float64(v) => Some(v).encode(env),
-        AnyValue::Date32(v) => Some(v).encode(env),
-        AnyValue::Date64(v) => Some(v).encode(env),
+        AnyValue::Date(v) => Some(v).encode(env),
+        AnyValue::Time(v) => Some(v).encode(env),
         dt => panic!("get/2 not implemented for {:?}", dt),
     };
     Ok(term)
@@ -696,12 +707,12 @@ pub fn s_cast(data: ExSeries, to_type: &str) -> Result<ExSeries, ExplorerError> 
 
 pub fn cast(s: &Series, to_type: &str) -> Result<Series, PolarsError> {
     match to_type {
-        "float" => Ok(s.cast::<Float64Type>()?),
-        "integer" => Ok(s.cast::<Int64Type>()?),
-        "date" => Ok(s.cast::<Date32Type>()?),
-        "datetime" => Ok(s.cast::<Date64Type>()?),
-        "boolean" => Ok(s.cast::<BooleanType>()?),
-        "string" => Ok(s.cast::<Utf8Type>()?),
+        "float" => Ok(s.cast(&Float64)?),
+        "integer" => Ok(s.cast(&Int64)?),
+        "date" => Ok(s.cast(&Date)?),
+        "datetime" => Ok(s.cast(&Time)?),
+        "boolean" => Ok(s.cast(&Boolean)?),
+        "string" => Ok(s.cast(&Utf8)?),
         _ => panic!("Cannot cast to type"),
     }
 }

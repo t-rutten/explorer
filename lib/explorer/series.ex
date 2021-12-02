@@ -1284,8 +1284,8 @@ defmodule Explorer.Series do
         [nil, 5, 7, 11, 13, 17, 19, 23, 25, 29]
       >
   """
-  def rolling_sum(series, window_size, weights \\ nil, ignore_nil? \\ true),
-    do: apply_impl(series, :rolling_sum, [window_size, weights, ignore_nil?])
+  def rolling_sum(series, window_size, weights \\ nil),
+    do: apply_impl(series, :rolling_sum, [window_size, weights])
 
   @doc """
   Calculate the rolling mean, given a window size and optional list of weights.
@@ -1306,8 +1306,8 @@ defmodule Explorer.Series do
         [nil, 2, 3, 5, 6, 8, 9, 11, 12, 14]
       >
   """
-  def rolling_mean(series, window_size, weights \\ nil, ignore_nil? \\ true),
-    do: apply_impl(series, :rolling_mean, [window_size, weights, ignore_nil?])
+  def rolling_mean(series, window_size, weights \\ nil),
+    do: apply_impl(series, :rolling_mean, [window_size, weights])
 
   @doc """
   Calculate the rolling min, given a window size and optional list of weights.
@@ -1328,8 +1328,8 @@ defmodule Explorer.Series do
         [nil, 1, 3, 3, 5, 5, 7, 7, 9, 9]
       >
   """
-  def rolling_min(series, window_size, weights \\ nil, ignore_nil? \\ true),
-    do: apply_impl(series, :rolling_min, [window_size, weights, ignore_nil?])
+  def rolling_min(series, window_size, weights \\ nil),
+    do: apply_impl(series, :rolling_min, [window_size, weights])
 
   @doc """
   Calculate the rolling max, given a window size and optional list of weights.
@@ -1350,8 +1350,8 @@ defmodule Explorer.Series do
         [nil, 4, 4, 8, 8, 12, 12, 16, 16, 20]
       >
   """
-  def rolling_max(series, window_size, weights \\ nil, ignore_nil? \\ true),
-    do: apply_impl(series, :rolling_max, [window_size, weights, ignore_nil?])
+  def rolling_max(series, window_size, weights \\ nil),
+    do: apply_impl(series, :rolling_max, [window_size, weights])
 
   # Missing values
 
