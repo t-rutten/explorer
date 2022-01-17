@@ -10,7 +10,7 @@
     <title>Explorer.Backend.Series — Explorer v0.1.0-dev</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-c4e249d511.js"></script>
+    <script src="dist/sidebar_items-4fecf7804f.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -404,28 +404,28 @@ Explorer.Backend.Series <small>behaviour</small> <small class="app-vsn">(Explore
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#c:rolling_max/4">rolling_max(s, window_size, weight, ignore_nil?)</a>
+    <a href="#c:rolling_max/5">rolling_max(s, window_size, weights, min_periods, center)</a>
 
   </div>
 
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#c:rolling_mean/4">rolling_mean(s, window_size, weight, ignore_nil?)</a>
+    <a href="#c:rolling_mean/5">rolling_mean(s, window_size, weights, min_periods, center)</a>
 
   </div>
 
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#c:rolling_min/4">rolling_min(s, window_size, weight, ignore_nil?)</a>
+    <a href="#c:rolling_min/5">rolling_min(s, window_size, weights, min_periods, center)</a>
 
   </div>
 
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#c:rolling_sum/4">rolling_sum(s, window_size, weight, ignore_nil?)</a>
+    <a href="#c:rolling_sum/5">rolling_sum(s, window_size, weights, min_periods, center)</a>
 
   </div>
 
@@ -1073,7 +1073,7 @@ Callbacks
     </a>
     <h1 class="signature">fill_missing(s, strategy)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/series.ex#L103" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/series.ex#L127" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1568,7 +1568,7 @@ Callbacks
     </a>
     <h1 class="signature">nil?(s)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/series.ex#L104" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/series.ex#L128" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1597,7 +1597,7 @@ Callbacks
     </a>
     <h1 class="signature">not_nil?(s)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/series.ex#L105" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/series.ex#L129" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1733,16 +1733,16 @@ Callbacks
 
   </section>
 </section>
-<section class="detail" id="c:rolling_max/4">
+<section class="detail" id="c:rolling_max/5">
 
   <div class="detail-header">
-    <a href="#c:rolling_max/4" class="detail-link" title="Link to this callback">
+    <a href="#c:rolling_max/5" class="detail-link" title="Link to this callback">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this callback</span>
     </a>
-    <h1 class="signature">rolling_max(s, window_size, weight, ignore_nil?)</h1>
+    <h1 class="signature">rolling_max(s, window_size, weights, min_periods, center)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/series.ex#L98" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/series.ex#L122" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1758,8 +1758,9 @@ Callbacks
           <pre>rolling_max(
   <a href="#t:s/0">s</a>(),
   window_size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
-  weight :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(),
-  ignore_nil? :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+  weights :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()],
+  min_periods :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+  center :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
 ) :: <a href="#t:s/0">s</a>()</pre>
 
       </div>
@@ -1767,16 +1768,16 @@ Callbacks
 
   </section>
 </section>
-<section class="detail" id="c:rolling_mean/4">
+<section class="detail" id="c:rolling_mean/5">
 
   <div class="detail-header">
-    <a href="#c:rolling_mean/4" class="detail-link" title="Link to this callback">
+    <a href="#c:rolling_mean/5" class="detail-link" title="Link to this callback">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this callback</span>
     </a>
-    <h1 class="signature">rolling_mean(s, window_size, weight, ignore_nil?)</h1>
+    <h1 class="signature">rolling_mean(s, window_size, weights, min_periods, center)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/series.ex#L94" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/series.ex#L106" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1792,8 +1793,9 @@ Callbacks
           <pre>rolling_mean(
   <a href="#t:s/0">s</a>(),
   window_size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
-  weight :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(),
-  ignore_nil? :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+  weights :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()],
+  min_periods :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+  center :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
 ) :: <a href="#t:s/0">s</a>()</pre>
 
       </div>
@@ -1801,16 +1803,16 @@ Callbacks
 
   </section>
 </section>
-<section class="detail" id="c:rolling_min/4">
+<section class="detail" id="c:rolling_min/5">
 
   <div class="detail-header">
-    <a href="#c:rolling_min/4" class="detail-link" title="Link to this callback">
+    <a href="#c:rolling_min/5" class="detail-link" title="Link to this callback">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this callback</span>
     </a>
-    <h1 class="signature">rolling_min(s, window_size, weight, ignore_nil?)</h1>
+    <h1 class="signature">rolling_min(s, window_size, weights, min_periods, center)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/series.ex#L96" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/series.ex#L114" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1826,8 +1828,9 @@ Callbacks
           <pre>rolling_min(
   <a href="#t:s/0">s</a>(),
   window_size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
-  weight :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(),
-  ignore_nil? :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+  weights :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()],
+  min_periods :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+  center :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
 ) :: <a href="#t:s/0">s</a>()</pre>
 
       </div>
@@ -1835,16 +1838,16 @@ Callbacks
 
   </section>
 </section>
-<section class="detail" id="c:rolling_sum/4">
+<section class="detail" id="c:rolling_sum/5">
 
   <div class="detail-header">
-    <a href="#c:rolling_sum/4" class="detail-link" title="Link to this callback">
+    <a href="#c:rolling_sum/5" class="detail-link" title="Link to this callback">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this callback</span>
     </a>
-    <h1 class="signature">rolling_sum(s, window_size, weight, ignore_nil?)</h1>
+    <h1 class="signature">rolling_sum(s, window_size, weights, min_periods, center)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/series.ex#L92" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/series.ex#L98" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1860,8 +1863,9 @@ Callbacks
           <pre>rolling_sum(
   <a href="#t:s/0">s</a>(),
   window_size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
-  weight :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(),
-  ignore_nil? :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+  weights :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()],
+  min_periods :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+  center :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
 ) :: <a href="#t:s/0">s</a>()</pre>
 
       </div>
@@ -2169,7 +2173,7 @@ Callbacks
     </a>
     <h1 class="signature">transform(s, function)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/series.ex#L109" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/series.ex#L133" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
