@@ -10,7 +10,7 @@
     <title>Explorer.Backend.DataFrame — Explorer v0.1.0-dev</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-306ebbbfb9.js"></script>
+    <script src="dist/sidebar_items-c4bceead23.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -295,7 +295,7 @@ Explorer.Backend.DataFrame <small>behaviour</small> <small class="app-vsn">(Expl
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#c:read_csv/10">read_csv(
+    <a href="#c:read_csv/12">read_csv(
   filename,
   names,
   dtypes,
@@ -305,7 +305,9 @@ Explorer.Backend.DataFrame <small>behaviour</small> <small class="app-vsn">(Expl
   header?,
   encoding,
   max_rows,
-  with_columns
+  with_columns,
+  infer_schema_length,
+  parse_dates
 )</a>
 
   </div>
@@ -591,7 +593,7 @@ Callbacks
     </a>
     <h1 class="signature">arrange(df, columns)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L54" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L56" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -620,7 +622,7 @@ Callbacks
     </a>
     <h1 class="signature">concat_rows(list)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L88" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L90" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -649,7 +651,7 @@ Callbacks
     </a>
     <h1 class="signature">distinct(df, columns, keep_all?)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L55" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L57" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -678,7 +680,7 @@ Callbacks
     </a>
     <h1 class="signature">drop_nil(df, columns)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L62" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L64" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -707,7 +709,7 @@ Callbacks
     </a>
     <h1 class="signature">dtypes(df)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L42" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L44" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -736,7 +738,7 @@ Callbacks
     </a>
     <h1 class="signature">dummies(df, columns)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L57" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L59" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -765,7 +767,7 @@ Callbacks
     </a>
     <h1 class="signature">filter(df, mask)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L52" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L54" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -794,7 +796,7 @@ Callbacks
     </a>
     <h1 class="signature">from_map(map)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L35" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L37" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -823,7 +825,7 @@ Callbacks
     </a>
     <h1 class="signature">group_by(df, columns)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L92" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L94" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -852,7 +854,7 @@ Callbacks
     </a>
     <h1 class="signature">head(df, rows)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L49" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L51" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -886,7 +888,7 @@ Callbacks
   how
 )</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L86" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L88" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -920,7 +922,7 @@ Callbacks
     </a>
     <h1 class="signature">mutate(df, with_columns)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L53" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L55" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -949,7 +951,7 @@ Callbacks
     </a>
     <h1 class="signature">n_cols(df)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L45" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L47" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -978,7 +980,7 @@ Callbacks
     </a>
     <h1 class="signature">n_rows(df)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L44" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L46" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1007,7 +1009,7 @@ Callbacks
     </a>
     <h1 class="signature">names(df)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L41" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L43" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1042,7 +1044,7 @@ Callbacks
   values_to
 )</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L77" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L79" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1083,7 +1085,7 @@ Callbacks
   names_prefix
 )</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L70" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L72" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1118,7 +1120,7 @@ Callbacks
     </a>
     <h1 class="signature">pull(df, column)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L59" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L61" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1138,10 +1140,10 @@ Callbacks
 
   </section>
 </section>
-<section class="detail" id="c:read_csv/10">
+<section class="detail" id="c:read_csv/12">
 
   <div class="detail-header">
-    <a href="#c:read_csv/10" class="detail-link" title="Link to this callback">
+    <a href="#c:read_csv/12" class="detail-link" title="Link to this callback">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this callback</span>
     </a>
@@ -1155,10 +1157,12 @@ Callbacks
   header?,
   encoding,
   max_rows,
-  with_columns
+  with_columns,
+  infer_schema_length,
+  parse_dates
 )</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L26" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L28" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1181,7 +1185,9 @@ Callbacks
   header? :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(),
   encoding :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
   max_rows :: Integer.t() | Inf,
-  with_columns :: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()] | nil
+  with_columns :: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()] | nil,
+  infer_schema_length :: Integer.t() | nil,
+  parse_dates :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
 ) :: <a href="#t:result/1">result</a>(<a href="#t:df/0">df</a>())</pre>
 
       </div>
@@ -1198,7 +1204,7 @@ Callbacks
     </a>
     <h1 class="signature">read_parquet(filename)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L30" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L32" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1227,7 +1233,7 @@ Callbacks
     </a>
     <h1 class="signature">rename(df, list)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L56" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L58" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1256,7 +1262,7 @@ Callbacks
     </a>
     <h1 class="signature">sample(df, n, with_replacement?, seed)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L58" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L60" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1286,7 +1292,7 @@ Callbacks
     </a>
     <h1 class="signature">select(df, columns, arg3)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L51" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L53" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1315,7 +1321,7 @@ Callbacks
     </a>
     <h1 class="signature">shape(df)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L43" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L45" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1344,7 +1350,7 @@ Callbacks
     </a>
     <h1 class="signature">slice(df, offset, length)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L60" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L62" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1373,7 +1379,7 @@ Callbacks
     </a>
     <h1 class="signature">summarise(df, aggregations)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L94" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L96" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1402,7 +1408,7 @@ Callbacks
     </a>
     <h1 class="signature">tail(df, rows)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L50" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L52" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1431,7 +1437,7 @@ Callbacks
     </a>
     <h1 class="signature">take(df, indices)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L61" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L63" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1460,7 +1466,7 @@ Callbacks
     </a>
     <h1 class="signature">to_binary(df, header?, delimiter)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L37" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L39" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1489,7 +1495,7 @@ Callbacks
     </a>
     <h1 class="signature">to_map(df, convert_series?)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L36" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L38" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1518,7 +1524,7 @@ Callbacks
     </a>
     <h1 class="signature">ungroup(df, columns)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L93" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L95" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1547,7 +1553,7 @@ Callbacks
     </a>
     <h1 class="signature">write_csv(df, filename, header?, delimiter)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L27" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L29" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -1582,7 +1588,7 @@ Callbacks
     </a>
     <h1 class="signature">write_parquet(df, filename)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L31" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.1.0-dev/lib/explorer/backend/data_frame.ex#L33" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
