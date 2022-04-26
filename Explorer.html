@@ -109,12 +109,12 @@ Explorer
 
 
   <section id="moduledoc">
-<p>The <a href="Explorer.html#content"><code class="inline">Explorer</code></a> library is a set of functions and data types to work with 
-tabular data in Elixir.</p><p>Most of the functionality in <a href="Explorer.html#content"><code class="inline">Explorer</code></a> is in <a href="Explorer.DataFrame.html"><code class="inline">Explorer.DataFrame</code></a> and 
-<a href="Explorer.Series.html"><code class="inline">Explorer.Series</code></a>. Refer to those modules for more in-depth documentation. </p><p>This module only handles the default backend for <a href="Explorer.html#content"><code class="inline">Explorer</code></a>. The default 
+<p>Explorer brings series (one-dimensional) and dataframes (two-dimensional)
+for fast data exploration to Elixir.</p><p>Most of the functionality in <a href="Explorer.html#content"><code class="inline">Explorer</code></a> is in <a href="Explorer.DataFrame.html"><code class="inline">Explorer.DataFrame</code></a> and
+<a href="Explorer.Series.html"><code class="inline">Explorer.Series</code></a>. Refer to those modules for more in-depth documentation.</p><p>This module only handles the default backend for <a href="Explorer.html#content"><code class="inline">Explorer</code></a>. The default
 backend is read from the application environment. Currently, the only backend
-is an in-memory, eager one based on 
-<a href="https://github.com/pola-rs/polars"><code class="inline">Polars</code></a>. When alternatives are 
+is an in-memory, eager one based on
+<a href="https://github.com/pola-rs/polars"><code class="inline">Polars</code></a>. When alternatives are
 available, you can use them by configuring your runtime:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># config/runtime.exs</span><span class="w">
 </span><span class="kn">import</span><span class="w"> </span><span class="nc">Config</span><span class="w">
 </span><span class="n">config</span><span class="w"> </span><span class="ss">:explorer</span><span class="p">,</span><span class="w"> </span><span class="ss">default_backend</span><span class="p">:</span><span class="w"> </span><span class="nc">Lib.CustomBackend</span></code></pre>
@@ -210,7 +210,7 @@ Functions
 
   <section class="docstring">
 
-<p>Sets the current process default backend to <code class="inline">backend</code>.</p><p>The default backend is stored only in the process dictionary. This means if 
+<p>Sets the current process default backend to <code class="inline">backend</code>.</p><p>The default backend is stored only in the process dictionary. This means if
 you start a separate process, such as <a href="https://hexdocs.pm/elixir/Task.html"><code class="inline">Task</code></a>, the default backend must be set
 on the new process too.</p><h2 id="default_backend/1-examples" class="section-heading">
   <a href="#default_backend/1-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
@@ -218,9 +218,9 @@ on the new process too.</p><h2 id="default_backend/1-examples" class="section-he
   </a>
   Examples
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer</span><span class="o">.</span><span class="n">default_backend</span><span class="p" data-group-id="9998079504-1">(</span><span class="nc">Lib.CustomBackend</span><span class="p" data-group-id="9998079504-1">)</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer</span><span class="o">.</span><span class="n">default_backend</span><span class="p" data-group-id="3124910369-1">(</span><span class="nc">Lib.CustomBackend</span><span class="p" data-group-id="3124910369-1">)</span><span class="w">
 </span><span class="nc">Explorer.PolarsBackend</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer</span><span class="o">.</span><span class="n">default_backend</span><span class="p" data-group-id="9998079504-2">(</span><span class="p" data-group-id="9998079504-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Explorer</span><span class="o">.</span><span class="n">default_backend</span><span class="p" data-group-id="3124910369-2">(</span><span class="p" data-group-id="3124910369-2">)</span><span class="w">
 </span><span class="nc">Lib.CustomBackend</span></code></pre>
   </section>
 </section>
