@@ -10,7 +10,7 @@
     <title>Explorer.Backend.Series — Explorer v0.2.0-dev</title>
     <link rel="stylesheet" href="dist/elixir-d5ff82e6b0f5651c0ac0.css" />
 
-    <script src="dist/sidebar_items-9695a35a94.js"></script>
+    <script src="dist/sidebar_items-a041bbc042.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -145,14 +145,6 @@ Explorer
 
       <div class="summary-row">
         <div class="summary-signature">
-          <a href="#t:rolling_option/0" translate="no">rolling_option()</a>
-
-        </div>
-
-      </div>
-
-      <div class="summary-row">
-        <div class="summary-signature">
           <a href="#t:s/0" translate="no">s()</a>
 
         </div>
@@ -162,6 +154,14 @@ Explorer
       <div class="summary-row">
         <div class="summary-signature">
           <a href="#t:t/0" translate="no">t()</a>
+
+        </div>
+
+      </div>
+
+      <div class="summary-row">
+        <div class="summary-signature">
+          <a href="#t:window_option/0" translate="no">window_option()</a>
 
         </div>
 
@@ -240,7 +240,7 @@ Explorer
 
       <div class="summary-row">
         <div class="summary-signature">
-          <a href="#c:cum_max/2" translate="no">cum_max(s, reverse?)</a>
+          <a href="#c:cumulative_max/2" translate="no">cumulative_max(s, reverse?)</a>
 
         </div>
 
@@ -248,7 +248,7 @@ Explorer
 
       <div class="summary-row">
         <div class="summary-signature">
-          <a href="#c:cum_min/2" translate="no">cum_min(s, reverse?)</a>
+          <a href="#c:cumulative_min/2" translate="no">cumulative_min(s, reverse?)</a>
 
         </div>
 
@@ -256,7 +256,7 @@ Explorer
 
       <div class="summary-row">
         <div class="summary-signature">
-          <a href="#c:cum_sum/2" translate="no">cum_sum(s, reverse?)</a>
+          <a href="#c:cumulative_sum/2" translate="no">cumulative_sum(s, reverse?)</a>
 
         </div>
 
@@ -472,38 +472,6 @@ Explorer
 
       <div class="summary-row">
         <div class="summary-signature">
-          <a href="#c:rolling_max/3" translate="no">rolling_max(s, window_size, list)</a>
-
-        </div>
-
-      </div>
-
-      <div class="summary-row">
-        <div class="summary-signature">
-          <a href="#c:rolling_mean/3" translate="no">rolling_mean(s, window_size, list)</a>
-
-        </div>
-
-      </div>
-
-      <div class="summary-row">
-        <div class="summary-signature">
-          <a href="#c:rolling_min/3" translate="no">rolling_min(s, window_size, list)</a>
-
-        </div>
-
-      </div>
-
-      <div class="summary-row">
-        <div class="summary-signature">
-          <a href="#c:rolling_sum/3" translate="no">rolling_sum(s, window_size, list)</a>
-
-        </div>
-
-      </div>
-
-      <div class="summary-row">
-        <div class="summary-signature">
           <a href="#c:sample/4" translate="no">sample(s, n, with_replacement, seed)</a>
 
         </div>
@@ -622,6 +590,38 @@ Explorer
 
       </div>
 
+      <div class="summary-row">
+        <div class="summary-signature">
+          <a href="#c:window_max/3" translate="no">window_max(s, window_size, list)</a>
+
+        </div>
+
+      </div>
+
+      <div class="summary-row">
+        <div class="summary-signature">
+          <a href="#c:window_mean/3" translate="no">window_mean(s, window_size, list)</a>
+
+        </div>
+
+      </div>
+
+      <div class="summary-row">
+        <div class="summary-signature">
+          <a href="#c:window_min/3" translate="no">window_min(s, window_size, list)</a>
+
+        </div>
+
+      </div>
+
+      <div class="summary-row">
+        <div class="summary-signature">
+          <a href="#c:window_sum/3" translate="no">window_sum(s, window_size, list)</a>
+
+        </div>
+
+      </div>
+
   </div>
 
   </section>
@@ -692,37 +692,6 @@ Types
 
   </section>
 </section>
-<section class="detail" id="t:rolling_option/0">
-
-  <div class="detail-header">
-    <a href="#t:rolling_option/0" class="detail-link" title="Link to this type">
-      <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this type</span>
-    </a>
-    <h1 class="signature" translate="no">rolling_option()</h1>
-
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/series.ex#L96" class="view-source" rel="help" title="View Source">
-       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
-
-      <div class="specs">
-
-          <pre translate="no"><span class="attribute">@type</span> rolling_option() ::
-  {:weights, [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()] | nil}
-  | {:min_periods, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>() | nil}
-  | {:center, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()}</pre>
-
-      </div>
-
-
-  </section>
-</section>
 <section class="detail" id="t:s/0">
 
   <div class="detail-header">
@@ -773,6 +742,37 @@ Types
       <div class="specs">
 
           <pre translate="no"><span class="attribute">@type</span> t() :: %{__struct__: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:window_option/0">
+
+  <div class="detail-header">
+    <a href="#t:window_option/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">window_option()</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/series.ex#L96" class="view-source" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> window_option() ::
+  {:weights, [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()] | nil}
+  | {:min_periods, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>() | nil}
+  | {:center, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()}</pre>
 
       </div>
 
@@ -1016,14 +1016,14 @@ Callbacks
 
   </section>
 </section>
-<section class="detail" id="c:cum_max/2">
+<section class="detail" id="c:cumulative_max/2">
 
   <div class="detail-header">
-    <a href="#c:cum_max/2" class="detail-link" title="Link to this callback">
+    <a href="#c:cumulative_max/2" class="detail-link" title="Link to this callback">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this callback</span>
     </a>
-    <h1 class="signature" translate="no">cum_max(s, reverse?)</h1>
+    <h1 class="signature" translate="no">cumulative_max(s, reverse?)</h1>
 
       <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/series.ex#L50" class="view-source" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
@@ -1037,21 +1037,21 @@ Callbacks
 
       <div class="specs">
 
-          <pre translate="no"><span class="attribute">@callback</span> cum_max(<a href="#t:s/0">s</a>(), reverse? :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()) :: <a href="#t:s/0">s</a>()</pre>
+          <pre translate="no"><span class="attribute">@callback</span> cumulative_max(<a href="#t:s/0">s</a>(), reverse? :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()) :: <a href="#t:s/0">s</a>()</pre>
 
       </div>
 
 
   </section>
 </section>
-<section class="detail" id="c:cum_min/2">
+<section class="detail" id="c:cumulative_min/2">
 
   <div class="detail-header">
-    <a href="#c:cum_min/2" class="detail-link" title="Link to this callback">
+    <a href="#c:cumulative_min/2" class="detail-link" title="Link to this callback">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this callback</span>
     </a>
-    <h1 class="signature" translate="no">cum_min(s, reverse?)</h1>
+    <h1 class="signature" translate="no">cumulative_min(s, reverse?)</h1>
 
       <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/series.ex#L51" class="view-source" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
@@ -1065,21 +1065,21 @@ Callbacks
 
       <div class="specs">
 
-          <pre translate="no"><span class="attribute">@callback</span> cum_min(<a href="#t:s/0">s</a>(), reverse? :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()) :: <a href="#t:s/0">s</a>()</pre>
+          <pre translate="no"><span class="attribute">@callback</span> cumulative_min(<a href="#t:s/0">s</a>(), reverse? :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()) :: <a href="#t:s/0">s</a>()</pre>
 
       </div>
 
 
   </section>
 </section>
-<section class="detail" id="c:cum_sum/2">
+<section class="detail" id="c:cumulative_sum/2">
 
   <div class="detail-header">
-    <a href="#c:cum_sum/2" class="detail-link" title="Link to this callback">
+    <a href="#c:cumulative_sum/2" class="detail-link" title="Link to this callback">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this callback</span>
     </a>
-    <h1 class="signature" translate="no">cum_sum(s, reverse?)</h1>
+    <h1 class="signature" translate="no">cumulative_sum(s, reverse?)</h1>
 
       <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/series.ex#L52" class="view-source" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
@@ -1093,7 +1093,7 @@ Callbacks
 
       <div class="specs">
 
-          <pre translate="no"><span class="attribute">@callback</span> cum_sum(<a href="#t:s/0">s</a>(), reverse? :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()) :: <a href="#t:s/0">s</a>()</pre>
+          <pre translate="no"><span class="attribute">@callback</span> cumulative_sum(<a href="#t:s/0">s</a>(), reverse? :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()) :: <a href="#t:s/0">s</a>()</pre>
 
       </div>
 
@@ -1830,118 +1830,6 @@ Callbacks
 
   </section>
 </section>
-<section class="detail" id="c:rolling_max/3">
-
-  <div class="detail-header">
-    <a href="#c:rolling_max/3" class="detail-link" title="Link to this callback">
-      <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this callback</span>
-    </a>
-    <h1 class="signature" translate="no">rolling_max(s, window_size, list)</h1>
-
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/series.ex#L103" class="view-source" rel="help" title="View Source">
-       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
-
-      <div class="specs">
-
-          <pre translate="no"><span class="attribute">@callback</span> rolling_max(<a href="#t:s/0">s</a>(), window_size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), [<a href="#t:rolling_option/0">rolling_option</a>()]) :: <a href="#t:s/0">s</a>()</pre>
-
-      </div>
-
-
-  </section>
-</section>
-<section class="detail" id="c:rolling_mean/3">
-
-  <div class="detail-header">
-    <a href="#c:rolling_mean/3" class="detail-link" title="Link to this callback">
-      <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this callback</span>
-    </a>
-    <h1 class="signature" translate="no">rolling_mean(s, window_size, list)</h1>
-
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/series.ex#L104" class="view-source" rel="help" title="View Source">
-       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
-
-      <div class="specs">
-
-          <pre translate="no"><span class="attribute">@callback</span> rolling_mean(<a href="#t:s/0">s</a>(), window_size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), [<a href="#t:rolling_option/0">rolling_option</a>()]) :: <a href="#t:s/0">s</a>()</pre>
-
-      </div>
-
-
-  </section>
-</section>
-<section class="detail" id="c:rolling_min/3">
-
-  <div class="detail-header">
-    <a href="#c:rolling_min/3" class="detail-link" title="Link to this callback">
-      <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this callback</span>
-    </a>
-    <h1 class="signature" translate="no">rolling_min(s, window_size, list)</h1>
-
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/series.ex#L102" class="view-source" rel="help" title="View Source">
-       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
-
-      <div class="specs">
-
-          <pre translate="no"><span class="attribute">@callback</span> rolling_min(<a href="#t:s/0">s</a>(), window_size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), [<a href="#t:rolling_option/0">rolling_option</a>()]) :: <a href="#t:s/0">s</a>()</pre>
-
-      </div>
-
-
-  </section>
-</section>
-<section class="detail" id="c:rolling_sum/3">
-
-  <div class="detail-header">
-    <a href="#c:rolling_sum/3" class="detail-link" title="Link to this callback">
-      <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this callback</span>
-    </a>
-    <h1 class="signature" translate="no">rolling_sum(s, window_size, list)</h1>
-
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/series.ex#L101" class="view-source" rel="help" title="View Source">
-       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
-
-      <div class="specs">
-
-          <pre translate="no"><span class="attribute">@callback</span> rolling_sum(<a href="#t:s/0">s</a>(), window_size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), [<a href="#t:rolling_option/0">rolling_option</a>()]) :: <a href="#t:s/0">s</a>()</pre>
-
-      </div>
-
-
-  </section>
-</section>
 <section class="detail" id="c:sample/4">
 
   <div class="detail-header">
@@ -2357,6 +2245,118 @@ Callbacks
       <div class="specs">
 
           <pre translate="no"><span class="attribute">@callback</span> var(<a href="#t:s/0">s</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:window_max/3">
+
+  <div class="detail-header">
+    <a href="#c:window_max/3" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">window_max(s, window_size, list)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/series.ex#L103" class="view-source" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> window_max(<a href="#t:s/0">s</a>(), window_size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), [<a href="#t:window_option/0">window_option</a>()]) :: <a href="#t:s/0">s</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:window_mean/3">
+
+  <div class="detail-header">
+    <a href="#c:window_mean/3" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">window_mean(s, window_size, list)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/series.ex#L104" class="view-source" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> window_mean(<a href="#t:s/0">s</a>(), window_size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), [<a href="#t:window_option/0">window_option</a>()]) :: <a href="#t:s/0">s</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:window_min/3">
+
+  <div class="detail-header">
+    <a href="#c:window_min/3" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">window_min(s, window_size, list)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/series.ex#L102" class="view-source" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> window_min(<a href="#t:s/0">s</a>(), window_size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), [<a href="#t:window_option/0">window_option</a>()]) :: <a href="#t:s/0">s</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:window_sum/3">
+
+  <div class="detail-header">
+    <a href="#c:window_sum/3" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">window_sum(s, window_size, list)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/series.ex#L101" class="view-source" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> window_sum(<a href="#t:s/0">s</a>(), window_size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), [<a href="#t:window_option/0">window_option</a>()]) :: <a href="#t:s/0">s</a>()</pre>
 
       </div>
 
