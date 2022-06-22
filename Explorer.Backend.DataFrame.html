@@ -10,7 +10,7 @@
     <title>Explorer.Backend.DataFrame — Explorer v0.2.0-dev</title>
     <link rel="stylesheet" href="dist/elixir-d5ff82e6b0f5651c0ac0.css" />
 
-    <script src="dist/sidebar_items-c6a30cf664.js"></script>
+    <script src="dist/sidebar_items-29891eda82.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -409,10 +409,13 @@ Explorer
 
       <div class="summary-row">
         <div class="summary-signature">
-          <a href="#c:pivot_longer/3" translate="no">pivot_longer(
+          <a href="#c:pivot_longer/6" translate="no">pivot_longer(
   df,
   out_df,
-  value_columns
+  columns_to_pivot,
+  columns_to_keep,
+  names_to,
+  values_to
 )</a>
 
         </div>
@@ -881,7 +884,7 @@ Callbacks
     </a>
     <h1 class="signature" translate="no">concat_rows(list)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/data_frame.ex#L114" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/data_frame.ex#L117" class="view-source" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -1288,7 +1291,7 @@ Callbacks
     </a>
     <h1 class="signature" translate="no">group_by(df, out_df)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/data_frame.ex#L118" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/data_frame.ex#L121" class="view-source" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -1378,7 +1381,7 @@ Callbacks
   how
 )</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/data_frame.ex#L112" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/data_frame.ex#L115" class="view-source" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -1544,20 +1547,23 @@ Callbacks
 
   </section>
 </section>
-<section class="detail" id="c:pivot_longer/3">
+<section class="detail" id="c:pivot_longer/6">
 
   <div class="detail-header">
-    <a href="#c:pivot_longer/3" class="detail-link" title="Link to this callback">
+    <a href="#c:pivot_longer/6" class="detail-link" title="Link to this callback">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this callback</span>
     </a>
     <h1 class="signature" translate="no">pivot_longer(
   df,
   out_df,
-  value_columns
+  columns_to_pivot,
+  columns_to_keep,
+  names_to,
+  values_to
 )</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/data_frame.ex#L102" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/data_frame.ex#L105" class="view-source" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -1572,7 +1578,10 @@ Callbacks
           <pre translate="no"><span class="attribute">@callback</span> pivot_longer(
   <a href="#t:df/0">df</a>(),
   out_df :: <a href="#t:df/0">df</a>(),
-  value_columns :: [<a href="#t:column_name/0">column_name</a>()]
+  columns_to_pivot :: [<a href="#t:column_name/0">column_name</a>()],
+  columns_to_keep :: [<a href="#t:column_name/0">column_name</a>()],
+  names_to :: <a href="#t:column_name/0">column_name</a>(),
+  values_to :: <a href="#t:column_name/0">column_name</a>()
 ) :: <a href="#t:df/0">df</a>()</pre>
 
       </div>
@@ -1798,7 +1807,7 @@ Callbacks
     </a>
     <h1 class="signature" translate="no">summarise(df, out_df, aggregations)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/data_frame.ex#L120" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/data_frame.ex#L123" class="view-source" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -2061,7 +2070,7 @@ Callbacks
     </a>
     <h1 class="signature" translate="no">ungroup(df, out_df)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/data_frame.ex#L119" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/data_frame.ex#L122" class="view-source" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -2104,7 +2113,7 @@ Functions
     </a>
     <h1 class="signature" translate="no">inspect(df, backend, n_rows, inspect_opts, opts \\ [])</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/data_frame.ex#L139" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/data_frame.ex#L142" class="view-source" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -2126,7 +2135,7 @@ Functions
     </a>
     <h1 class="signature" translate="no">new(data, names, dtypes)</h1>
 
-      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/data_frame.ex#L128" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.2.0-dev/lib/explorer/backend/data_frame.ex#L131" class="view-source" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
