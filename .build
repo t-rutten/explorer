@@ -1,6 +1,8 @@
 /home/runner/work/explorer/explorer/doc/exploring_explorer.livemd
 404.html
 Explorer.Backend.DataFrame.html
+Explorer.Backend.LazyFrame.html
+Explorer.Backend.LazySeries.html
 Explorer.Backend.Series.html
 Explorer.Backend.html
 Explorer.DataFrame.html
@@ -18,8 +20,8 @@ dist/html/fonts/remixicon.svg
 dist/html/fonts/remixicon.ttf
 dist/html/fonts/remixicon.woff
 dist/html/fonts/remixicon.woff2
-dist/search_items-66a7899349.js
-dist/sidebar_items-22ec6211b6.js
+dist/search_items-6e153ce4fa.js
+dist/sidebar_items-1f54ecbe16.js
 exploring_explorer.html
 index.html
 search.html
